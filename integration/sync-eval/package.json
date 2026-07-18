@@ -16,7 +16,7 @@
     "verify": "npm run build && npm run test:unit && npm run test:integration"
   },
   "dependencies": {
-    "@fastify/cors": "^10.0.0",
+    "@fastify/cors": "^11.3.0",
     "@fastify/websocket": "^11.0.0",
     "@tldraw/sync": "5.2.5",
     "@tldraw/sync-core": "5.2.5",
