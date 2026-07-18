@@ -19,7 +19,7 @@ Regenerate current and malformed fixtures with:
 ```bash
 cd eval-app
 npm ci
-npm run verify
+UPDATE_FIXTURES=1 npm run verify
 ```
 
-The verification run also parses every fixture with the live `tldraw@5.2.5` runtime and checks that the production bundle does not expose the dev bridge.
+Normal `npm run verify` writes generated files only under ignored `eval-app/artifacts/`, so a verification run does not dirty a clean checkout. Set `UPDATE_FIXTURES=1` only when intentionally refreshing the two tracked runtime-generated fixtures. The verification run also parses every fixture with the live `tldraw@5.2.5` runtime and checks that the production bundle does not expose the dev bridge.

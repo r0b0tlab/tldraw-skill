@@ -84,6 +84,14 @@ class HarnessReleaseContractTests(unittest.TestCase):
         self.assertLess(validate_at, unittest_at)
         self.assertIn("PYTHONDONTWRITEBYTECODE=1", readme)
 
+    def test_eval_browser_harness_binds_the_address_it_navigates_to(self) -> None:
+        verify = read("eval-app/scripts/verify.mjs")
+        self.assertIn("host: '127.0.0.1', port: 5199", verify)
+
+    def test_eval_verify_does_not_rewrite_tracked_fixtures_by_default(self) -> None:
+        verify = read("eval-app/scripts/verify.mjs")
+        self.assertIn("process.env.UPDATE_FIXTURES === '1'", verify)
+
 
 if __name__ == "__main__":
     unittest.main()

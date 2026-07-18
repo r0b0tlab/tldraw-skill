@@ -1,7 +1,7 @@
 /**
  * Browser verification harness (Playwright).
  * Starts Vite preview or uses VITE_URL, waits for window.__hermesTldrawEvalStatus,
- * harvests .tldr + SVG into artifacts/ and tests/fixtures/.
+ * harvests .tldr + SVG into artifacts/; UPDATE_FIXTURES=1 refreshes tracked fixtures.
  *
  * Extended gates (machine-readable in artifacts/eval-status.json):
  * - real @tldraw/driver create/select/transform + dispose
@@ -24,6 +24,7 @@ const root = path.resolve(__dirname, '..')
 const repoRoot = path.resolve(root, '..')
 const artifactsDir = path.join(root, 'artifacts')
 const fixturesDir = path.join(repoRoot, 'tests', 'fixtures')
+const updateFixtures = process.env.UPDATE_FIXTURES === '1'
 
 async function ensureDirs() {
 	await fs.mkdir(artifactsDir, { recursive: true })
@@ -347,7 +348,7 @@ async function main() {
 	const persistenceKey = `eval-verify-${Date.now().toString(36)}`
 	const server = await createServer({
 		root,
-		server: { port: 5199, strictPort: true },
+		server: { host: '127.0.0.1', port: 5199, strictPort: true },
 		logLevel: 'error',
 	})
 	await server.listen()
@@ -427,9 +428,10 @@ async function main() {
 	// Harvest fixtures from official serializer output
 	let malformedJson = null
 	if (tldrJson) {
-		const validPath = path.join(fixturesDir, 'valid-current.tldr')
-		await fs.writeFile(validPath, tldrJson, 'utf8')
 		await fs.writeFile(path.join(artifactsDir, 'valid-current.tldr'), tldrJson, 'utf8')
+		if (updateFixtures) {
+			await fs.writeFile(path.join(fixturesDir, 'valid-current.tldr'), tldrJson, 'utf8')
+		}
 
 		// Malformed: one documented mutation — break tldrawFileFormatVersion type
 		const envelope = JSON.parse(tldrJson)
@@ -438,8 +440,14 @@ async function main() {
 			tldrawFileFormatVersion: 'not-a-number',
 		}
 		malformedJson = JSON.stringify(malformed, null, 2)
-		await fs.writeFile(path.join(fixturesDir, 'malformed-envelope.tldr'), malformedJson, 'utf8')
 		await fs.writeFile(path.join(artifactsDir, 'malformed-envelope.tldr'), malformedJson, 'utf8')
+		if (updateFixtures) {
+			await fs.writeFile(
+				path.join(fixturesDir, 'malformed-envelope.tldr'),
+				malformedJson,
+				'utf8'
+			)
+		}
 	}
 
 	if (svg) {
