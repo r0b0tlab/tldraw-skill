@@ -16,7 +16,8 @@ import ast
 import re
 import sys
 from pathlib import Path
-from typing import Dict, List, Optional, Sequence, Set, Tuple
+from typing import Any, Dict, Iterable, List, Optional, Sequence, Set, Tuple
+from urllib.parse import unquote as url_unquote, urlsplit
 
 # Hermes limits (from skill_manager_tool.py)
 MAX_NAME_LENGTH = 64
@@ -301,10 +302,11 @@ def validate_skill(skill_dir: Path) -> List[str]:
             continue
         if href.startswith("${HERMES_SKILL_DIR}/"):
             continue  # already handled
-        if ".." in Path(href.split("#")[0]).parts:
+        href_path = url_unquote(urlsplit(href).path)
+        if ".." in Path(href_path).parts:
             errors.append(f"Path traversal in markdown link: {href}")
             continue
-        local = (skill_dir / href.split("#")[0]).resolve()
+        local = (skill_dir / href_path).resolve()
         try:
             local.relative_to(skill_dir)
         except ValueError:
@@ -313,7 +315,7 @@ def validate_skill(skill_dir: Path) -> List[str]:
         if not local.exists():
             errors.append(f"Broken relative link: {href}")
         else:
-            linked_rel.add(href.split("#")[0])
+            linked_rel.add(href_path)
 
     # Runtime support files should be linked (scripts at minimum if present)
     for scripts_dir in (skill_dir / "scripts",):

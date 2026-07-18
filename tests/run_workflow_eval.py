@@ -397,7 +397,7 @@ def evaluate_repository(root: Path) -> dict[str, Any]:
             "tests/reviews/activation-summary.json#pos-upstream-monorepo",
         ),
         "respects_contribution_policy": _result(
-            "AGENTS.md" in upstream_ref
+            "repository agent instructions" in upstream_ref.lower()
             and "targeted" in upstream_ref.lower()
             and "yarn" in upstream_ref
             and upstream_fixture.get("contribution_policy") == "issues-only",

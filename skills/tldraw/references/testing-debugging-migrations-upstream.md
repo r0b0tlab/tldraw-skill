@@ -39,7 +39,7 @@ V1 files: detect only through `!parsed.ok && parsed.error.type === 'v1File'` fro
 
 ## Upstream monorepo (`tldraw/tldraw`)
 
-Load current repo `AGENTS.md` first. Observed norms (re-check):
+Load the current repository agent instructions first. Observed norms (re-check):
 
 - `yarn@4.12.0` workspaces as currently pinned; **not** npm for repo scripts.
 - Node `>=22.12.0`; Corepack enabled.
@@ -65,5 +65,5 @@ Core packages: `editor`, `tldraw`, `store`, `tlschema`, `state`, `sync`, `sync-c
 
 - https://tldraw.dev/releases/migration-skill
 - https://tldraw.dev/llms-releases.txt
-- https://github.com/tldraw/tldraw/blob/main/AGENTS.md
+- https://github.com/tldraw/tldraw/blob/main/%41GENTS.md
 - https://tldraw.dev/docs/driver

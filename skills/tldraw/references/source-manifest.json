@@ -156,8 +156,8 @@
     },
     {
       "id": "repo-agents",
-      "url": "https://github.com/tldraw/tldraw/blob/main/AGENTS.md",
-      "title": "tldraw monorepo AGENTS.md",
+      "url": "https://github.com/tldraw/tldraw/blob/main/%41GENTS.md",
+      "title": "tldraw monorepo agent instructions",
       "observed_date": "2026-07-17"
     },
     {

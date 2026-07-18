@@ -113,7 +113,7 @@ Custom shapes must implement export hooks for faithful SVG. Fonts, embeds, and C
 ## Mermaid
 
 ```bash
-npm install @tldraw/mermaid
+npm install @tldraw/mermaid@5.2.5
 ```
 
 Use public helpers such as `createMermaidDiagram` / blueprint render APIs from `@tldraw/mermaid` (check installed exports). In 5.2.5, installed types define `createMermaidDiagram` as `Promise<void>`; do not depend on its stale return-value JSDoc. Examples: mermaid-pasting, custom-shape-mermaids, hundred-mermaids.

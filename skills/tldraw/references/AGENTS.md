@@ -1,6 +1,6 @@
 # Packaged agent contract — tldraw
 
-This mirror is retained under `references/` because skill package/tap installers may preserve only `SKILL.md` plus allowed support directories. Source-tree installs also have `${HERMES_SKILL_DIR}/AGENTS.md`.
+This mirror is retained under `references/` because skill package/tap installers may preserve only `SKILL.md` plus allowed support directories. Source-tree installs also include the root agent contract.
 
 ## Load order
 

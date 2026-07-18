@@ -102,9 +102,44 @@ class HarnessReleaseContractTests(unittest.TestCase):
             r"((?:references|templates|scripts|assets|examples)/[^\s)`\"'<>]+)",
             re.MULTILINE,
         )
+        referenced: set[str] = set()
         for match in local_ref_re.finditer(skill_md.replace("\\", "/")):
             raw = unquote(urlsplit(match.group(1).rstrip(".,;:")).path)
+            referenced.add(raw)
             self.assertTrue((skill_dir / raw).is_file(), f"missing support file: {raw}")
+
+        expected = {
+            path.relative_to(skill_dir).as_posix()
+            for directory in ("references", "templates", "scripts", "assets", "examples")
+            if (skill_dir / directory).is_dir()
+            for path in (skill_dir / directory).rglob("*")
+            if path.is_file()
+        }
+        self.assertSetEqual(referenced, expected)
+
+    def test_hermes_community_bundle_avoids_known_blocking_false_positives(self) -> None:
+        """Keep legitimate docs/scripts clear of current critical/high scanner shorthands."""
+        skill_dir = ROOT / "skills" / "tldraw"
+        bundled = [skill_dir / "SKILL.md"]
+        bundled.extend(
+            path
+            for directory in ("references", "templates", "scripts")
+            for path in (skill_dir / directory).rglob("*")
+            if path.is_file()
+        )
+        blockers = {
+            "agent config filename": re.compile(
+                r"AGENTS\.md|CLAUDE\.md|\.cursorrules|\.clinerules", re.IGNORECASE
+            ),
+            "dynamic environment access": re.compile(r"os\.environ\b"),
+        }
+        for path in bundled:
+            text = path.read_text(encoding="utf-8")
+            for label, pattern in blockers.items():
+                self.assertIsNone(
+                    pattern.search(text),
+                    f"{label} triggers the Hermes community scanner in {path.relative_to(skill_dir)}",
+                )
 
 
 if __name__ == "__main__":

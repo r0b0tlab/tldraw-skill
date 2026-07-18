@@ -26,7 +26,7 @@ Record URL, fetch time, and SHA-256 when updating `${HERMES_SKILL_DIR}/reference
 - Install **`tldraw`** for the full SDK (shapes + UI). Do not recommend legacy `@tldraw/tldraw`.
 - Keep `tldraw`, `@tldraw/editor`, `@tldraw/store`, `@tldraw/tlschema`, `@tldraw/sync`, `@tldraw/sync-core`, `@tldraw/driver`, `@tldraw/mermaid`, etc. on the **same published version** unless release notes document a deliberate mix.
 - Peer React: current packages advertise `^18.2.0 || ^19.2.1` (verify installed `package.json`).
-- Upstream monorepo: Yarn 4 + Node `>=22.12.0` per repo `AGENTS.md` — different from app-consumer workflows.
+- Upstream monorepo: Yarn 4 + Node `>=22.12.0` per the repository agent instructions — different from app-consumer workflows.
 
 ## Anti-hallucination checklist
 
@@ -34,7 +34,7 @@ Use as a pre-merge grep list. Names may appear only in labeled pitfalls/negative
 
 | Pattern to reject | Current public guidance |
 |---|---|
-| `npm i @tldraw/tldraw` | `npm install tldraw` |
+| `npm i @tldraw/tldraw` | Pin the inspected package version, for example `npm install tldraw@5.2.5` |
 | Canvas2D / rough.js pipeline as the main canvas | DOM + React HTML/CSS shapes |
 | `type: 'rectangle' \| 'circle'` | `type: 'geo'`, `props.geo: 'rectangle' \| 'ellipse' \| …` |
 | `props: { text: '…' }` | `props: { richText: toRichText('…') }` |

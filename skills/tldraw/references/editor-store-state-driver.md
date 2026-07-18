@@ -76,7 +76,7 @@ Use `store.listen` filters; do not invent private record APIs.
 ## Driver
 
 ```bash
-npm install @tldraw/driver
+npm install @tldraw/driver@5.2.5
 ```
 
 ```ts

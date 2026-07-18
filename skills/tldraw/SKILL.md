@@ -74,7 +74,7 @@ Never “fix” a missing public API with `@internal` or `any`. Full policy: `${
 
 | Wrong / stale | Correct (verify on installed version) |
 |---|---|
-| `@tldraw/tldraw` | `npm install tldraw` |
+| `@tldraw/tldraw` | Package `tldraw`; pin the inspected version (for example, `npm install tldraw@5.2.5`) |
 | Canvas2D scene graph | React-rendered **DOM** (HTML/CSS) |
 | `type: 'rectangle'` / `'circle'` | `type: 'geo'` + `props.geo` |
 | `props.text` | `richText: toRichText(...)` |
@@ -146,7 +146,7 @@ Custom shapes are **not** portable to tldraw.com unless that host registers the 
 | Existing React app | Add `tldraw` + CSS; full-size container; match React peer range |
 | Greenfield | `npm create tldraw@latest` or official kit matching the use case |
 | Artifact only | Minimal app + Editor pipeline above |
-| Upstream monorepo | Repo `AGENTS.md`; Yarn 4; Node ≥ 22.12; never bare `tsc` |
+| Upstream monorepo | Repository agent contract; Yarn 4; Node ≥ 22.12; never bare `tsc` |
 
 Details: `${HERMES_SKILL_DIR}/references/project-routing-and-starters.md`.
 
@@ -198,21 +198,21 @@ Details: `${HERMES_SKILL_DIR}/references/project-routing-and-starters.md`.
 
 All runtime paths use `${HERMES_SKILL_DIR}`:
 
-- `${HERMES_SKILL_DIR}/scripts/inspect_project.py`
-- `${HERMES_SKILL_DIR}/scripts/doctor.py`
-- `${HERMES_SKILL_DIR}/scripts/fetch_official_docs.py`
-- `${HERMES_SKILL_DIR}/templates/hermes-dev-bridge.ts`
-- `${HERMES_SKILL_DIR}/references/AGENTS.md` (packaged cross-agent contract; source installs also include root `AGENTS.md`)
-- `${HERMES_SKILL_DIR}/references/source-manifest.json`
-- `${HERMES_SKILL_DIR}/references/source-and-version-policy.md`
-- `${HERMES_SKILL_DIR}/references/project-routing-and-starters.md`
-- `${HERMES_SKILL_DIR}/references/diagram-authoring.md`
-- `${HERMES_SKILL_DIR}/references/editor-store-state-driver.md`
-- `${HERMES_SKILL_DIR}/references/shapes-tools-bindings.md`
-- `${HERMES_SKILL_DIR}/references/ui-accessibility-internationalization.md`
-- `${HERMES_SKILL_DIR}/references/data-files-assets-export-mermaid.md`
-- `${HERMES_SKILL_DIR}/references/sync-collaboration.md`
-- `${HERMES_SKILL_DIR}/references/ai-and-starter-kits.md`
-- `${HERMES_SKILL_DIR}/references/performance-security-licensing-deployment.md`
-- `${HERMES_SKILL_DIR}/references/testing-debugging-migrations-upstream.md`
-- `${HERMES_SKILL_DIR}/references/capability-map.md`
+- [`scripts/inspect_project.py`](scripts/inspect_project.py) — runtime: `${HERMES_SKILL_DIR}/scripts/inspect_project.py`
+- [`scripts/doctor.py`](scripts/doctor.py) — runtime: `${HERMES_SKILL_DIR}/scripts/doctor.py`
+- [`scripts/fetch_official_docs.py`](scripts/fetch_official_docs.py) — runtime: `${HERMES_SKILL_DIR}/scripts/fetch_official_docs.py`
+- [`templates/hermes-dev-bridge.ts`](templates/hermes-dev-bridge.ts) — runtime: `${HERMES_SKILL_DIR}/templates/hermes-dev-bridge.ts`
+- [Packaged cross-agent contract](references/%41GENTS.md) (source installs also include a root agent contract)
+- [`references/source-manifest.json`](references/source-manifest.json) — runtime: `${HERMES_SKILL_DIR}/references/source-manifest.json`
+- [`references/source-and-version-policy.md`](references/source-and-version-policy.md) — runtime: `${HERMES_SKILL_DIR}/references/source-and-version-policy.md`
+- [`references/project-routing-and-starters.md`](references/project-routing-and-starters.md) — runtime: `${HERMES_SKILL_DIR}/references/project-routing-and-starters.md`
+- [`references/diagram-authoring.md`](references/diagram-authoring.md) — runtime: `${HERMES_SKILL_DIR}/references/diagram-authoring.md`
+- [`references/editor-store-state-driver.md`](references/editor-store-state-driver.md) — runtime: `${HERMES_SKILL_DIR}/references/editor-store-state-driver.md`
+- [`references/shapes-tools-bindings.md`](references/shapes-tools-bindings.md) — runtime: `${HERMES_SKILL_DIR}/references/shapes-tools-bindings.md`
+- [`references/ui-accessibility-internationalization.md`](references/ui-accessibility-internationalization.md) — runtime: `${HERMES_SKILL_DIR}/references/ui-accessibility-internationalization.md`
+- [`references/data-files-assets-export-mermaid.md`](references/data-files-assets-export-mermaid.md) — runtime: `${HERMES_SKILL_DIR}/references/data-files-assets-export-mermaid.md`
+- [`references/sync-collaboration.md`](references/sync-collaboration.md) — runtime: `${HERMES_SKILL_DIR}/references/sync-collaboration.md`
+- [`references/ai-and-starter-kits.md`](references/ai-and-starter-kits.md) — runtime: `${HERMES_SKILL_DIR}/references/ai-and-starter-kits.md`
+- [`references/performance-security-licensing-deployment.md`](references/performance-security-licensing-deployment.md) — runtime: `${HERMES_SKILL_DIR}/references/performance-security-licensing-deployment.md`
+- [`references/testing-debugging-migrations-upstream.md`](references/testing-debugging-migrations-upstream.md) — runtime: `${HERMES_SKILL_DIR}/references/testing-debugging-migrations-upstream.md`
+- [`references/capability-map.md`](references/capability-map.md) — runtime: `${HERMES_SKILL_DIR}/references/capability-map.md`

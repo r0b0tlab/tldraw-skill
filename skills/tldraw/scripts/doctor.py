@@ -5,8 +5,8 @@ Usage:
   python3 doctor.py [--project DIR] [--json]
 
 Checks Node/package-manager availability, runs project inspection, CSS/container
-signals, version mismatch, optional browser/runtime indicators, and license-key
-presence as a boolean only (never prints secret values).
+signals, version mismatch, optional browser/runtime indicators, and license
+configuration presence from project files as a boolean only (never prints values).
 
 Rules: no network, no writes, never print env values.
 """
@@ -14,7 +14,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 import re
 import shutil
 import subprocess
@@ -92,16 +91,6 @@ def detect_css_container_signals(project: Path) -> Dict[str, Any]:
     return signals
 
 
-def env_license_present() -> bool:
-    """Boolean only — never read/print values into output."""
-    for key in os.environ:
-        if key.upper() in {"TLDRAW_LICENSE_KEY", "TLDRAW_LICENSE", "LICENSE_KEY"}:
-            val = os.environ.get(key)
-            if val is not None and str(val).strip() != "":
-                return True
-    return False
-
-
 def redact_secrets(text: str) -> str:
     """Best-effort redaction if secrets accidentally appear."""
     text = re.sub(r"(?i)(api[_-]?key|token|secret|password|license[_-]?key)\s*[=:]\s*\S+", r"\1=***", text)
@@ -147,7 +136,7 @@ def doctor(project_dir: Path) -> Dict[str, Any]:
         "chromium": bool(which("chromium") or which("chromium-browser") or which("google-chrome")),
         "firefox": bool(which("firefox")),
         "playwright": bool(which("playwright") or local_playwright),
-        "DISPLAY": bool(os.environ.get("DISPLAY") or os.environ.get("WAYLAND_DISPLAY")),
+        "display_environment": "not_inspected",
     }
 
     inspect_data: Dict[str, Any] = {}
@@ -173,8 +162,8 @@ def doctor(project_dir: Path) -> Dict[str, Any]:
     else:
         checks["version_mismatch"] = False
 
-    # license key presence boolean only
-    license_present = bool((inspect_data.get("signals") or {}).get("license_key_present")) or env_license_present()
+    # Project-file signal only; do not inspect the process environment.
+    license_present = bool((inspect_data.get("signals") or {}).get("license_key_present"))
     checks["license_key_present"] = bool(license_present)
 
     # package manager alignment

@@ -7,7 +7,7 @@
 | **Existing app** | `package.json` with React app, no or partial tldraw | Add `tldraw`, CSS, sized container; preserve framework |
 | **Greenfield app** | Empty or new repo, wants full product | `npm create tldraw@latest` or kit matching use case |
 | **Artifact only** | Need `.tldr`/PNG/SVG, not a product | Minimal Vite/React app + Editor serialize pipeline |
-| **Upstream monorepo** | Inside `tldraw/tldraw` | Follow repo `AGENTS.md` (Yarn 4, targeted tests) |
+| **Upstream monorepo** | Inside `tldraw/tldraw` | Follow the repository agent instructions (Yarn 4, targeted tests) |
 
 Run:
 

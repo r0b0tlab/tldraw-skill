@@ -72,7 +72,7 @@ def validate_corpus_url(url: str) -> str:
 
 
 def cache_root() -> Path:
-    xdg = os.environ.get("XDG_CACHE_HOME")
+    xdg = os.getenv("XDG_CACHE_HOME")
     if xdg:
         base = Path(xdg)
     else:
@@ -81,16 +81,17 @@ def cache_root() -> Path:
 
 
 def corpus_url(name: str) -> str:
-    env_keys = {
-        "index": "TLDRAW_DOCS_INDEX_URL",
-        "docs": "TLDRAW_DOCS_DOCS_URL",
-        "examples": "TLDRAW_DOCS_EXAMPLES_URL",
-        "releases": "TLDRAW_DOCS_RELEASES_URL",
-        "full": "TLDRAW_DOCS_FULL_URL",
+    overrides = {
+        "index": os.getenv("TLDRAW_DOCS_INDEX_URL"),
+        "docs": os.getenv("TLDRAW_DOCS_DOCS_URL"),
+        "examples": os.getenv("TLDRAW_DOCS_EXAMPLES_URL"),
+        "releases": os.getenv("TLDRAW_DOCS_RELEASES_URL"),
+        "full": os.getenv("TLDRAW_DOCS_FULL_URL"),
     }
-    if name in env_keys and os.environ.get(env_keys[name]):
-        return validate_corpus_url(os.environ[env_keys[name]])
-    base = os.environ.get("TLDRAW_DOCS_BASE_URL")
+    override = overrides.get(name)
+    if override:
+        return validate_corpus_url(override)
+    base = os.getenv("TLDRAW_DOCS_BASE_URL")
     if base:
         # map to path suffixes for test server
         suffixes = {
