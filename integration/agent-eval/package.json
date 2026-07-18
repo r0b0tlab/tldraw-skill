@@ -16,7 +16,7 @@
 		"verify": "npm run test && npm run typecheck && npm run build && npm run scan:bundle && npm run migrate:legacy"
 	},
 	"dependencies": {
-		"@ai-sdk/anthropic": "^2.0.2",
+		"@ai-sdk/anthropic": "^4.0.16",
 		"@ai-sdk/google": "^2.0.14",
 		"@ai-sdk/openai": "^2.0.24",
 		"@cloudflare/vite-plugin": "^1.29.1",
