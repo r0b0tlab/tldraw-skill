@@ -15,7 +15,7 @@ metadata:
 
 ## Overview
 
-Version-aware router for the **public tldraw SDK** (React infinite canvas): Editor/store, shapes/tools/bindings, UI/a11y, assets/persistence/`.tldr`/export/Mermaid, `@tldraw/driver`, `@tldraw/sync`, official starter kits, AI agent kits, migrations, licensing, and upstream contribution.
+Version-aware router for the **public tldraw SDK** (React infinite canvas): Editor/store, shapes/tools/bindings, UI and accessibility, asset handling, persistence, `.tldr` files, export, Mermaid, `@tldraw/driver`, `@tldraw/sync`, official starter kits, AI agent kits, migrations, licensing, and upstream contribution.
 
 **Scope:** documented public APIs, published packages, and official starters. **Not** private tldraw.com internals, `@internal` symbols, or raw Python `.tldr` generation.
 

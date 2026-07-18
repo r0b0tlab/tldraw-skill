@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Release contracts discovered by independent review."""
 from __future__ import annotations
-
+import json
 import re
 import unittest
 from pathlib import Path
+from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -91,6 +92,19 @@ class HarnessReleaseContractTests(unittest.TestCase):
     def test_eval_verify_does_not_rewrite_tracked_fixtures_by_default(self) -> None:
         verify = read("eval-app/scripts/verify.mjs")
         self.assertIn("process.env.UPDATE_FIXTURES === '1'", verify)
+
+    def test_hermes_bundle_references_resolve_to_files(self) -> None:
+        """Mirror Hermes' support-path extraction so hub installs cannot fail late."""
+        skill_dir = ROOT / "skills" / "tldraw"
+        skill_md = (skill_dir / "SKILL.md").read_text(encoding="utf-8")
+        local_ref_re = re.compile(
+            r"(?:\]\(|`|(?:^|[\s\"']))"
+            r"((?:references|templates|scripts|assets|examples)/[^\s)`\"'<>]+)",
+            re.MULTILINE,
+        )
+        for match in local_ref_re.finditer(skill_md.replace("\\", "/")):
+            raw = unquote(urlsplit(match.group(1).rstrip(".,;:")).path)
+            self.assertTrue((skill_dir / raw).is_file(), f"missing support file: {raw}")
 
 
 if __name__ == "__main__":

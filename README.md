@@ -13,14 +13,14 @@ Version-aware [Hermes Agent](https://hermes-agent.nousresearch.com/) skill for b
 
 ## Install with Hermes
 
-Add the public repository as a custom skill tap, then install the `tldraw` skill:
+Add the public repository as a custom skill tap, then install the skill by its exact repository path:
 
 ```bash
 hermes skills tap add r0b0tlab/tldraw-skill
-hermes skills install r0b0tlab/tldraw-skill/tldraw
+hermes skills install r0b0tlab/tldraw-skill/skills/tldraw
 ```
 
-Or install the skill directly without subscribing to the tap:
+Or install the same exact path directly without subscribing to the tap:
 
 ```bash
 hermes skills install r0b0tlab/tldraw-skill/skills/tldraw

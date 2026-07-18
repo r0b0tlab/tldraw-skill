@@ -58,9 +58,9 @@ Hermes users and coding agents need correct, version-aware guidance across tldra
 ## Current State
 
 **Phase:** verify
-**Last completed:** Published the initial commit to `r0b0tlab/tldraw-skill`; diagnosed the first CI failure as a Vite localhost/IPv6 bind mismatch and added a loopback-host regression contract.
-**In progress:** Push the CI portability fix and require a green remote workflow.
-**Next action:** Verify GitHub Actions, then execute clean-clone and clean-profile tap installation checks.
+**Last completed:** GitHub Actions passed on `main`, and a clean remote clone passed the full Python, eval-app, sync, agent, workflow, source, upstream, visual, benchmark, and audit gates without dirtying tracked files.
+**In progress:** Complete clean-profile Hermes installation after fixing an ambiguous support-path phrase that the Hermes bundle parser interpreted as a missing file.
+**Next action:** Push the bundle-reference regression fix, re-run CI, then install and inspect the remote skill in the no-bundled-skills profile.
 **Blockers:** No code blocker. Provider-backed AI execution remains explicitly unverified because no supported provider credentials are available.
 **Notes:** Publication is not complete until the remote clean-profile path and CI are verified.
 ## Architecture
@@ -204,3 +204,4 @@ Hermes users and coding agents need correct, version-aware guidance across tldra
 - **2026-07-18** — Reconciled project state with the implemented tldraw 5.2.5 skill; remediated final API, security, activation-evidence, CI, CORS, upload, room-isolation, and production-bridge findings; full local regression is green. Publication and clean-clone verification remain pending.
 - **2026-07-18** — Independent review gate closed: API/spec PASS, evidence/release PASS, and focused post-fix security PASS with no critical/high/medium findings. Local stable gates: 80 Python tests, agent 27/27, workflow 12/12.
 - **2026-07-18** — Created and pushed public r0b0tlab/tldraw-skill. First CI run exposed a Vite dev server localhost/IPv6 bind mismatch. Added a failing regression contract, bound the server to 127.0.0.1, and made normal verify runs leave tracked runtime fixtures unchanged; local 82-test and browser gates pass.
+- **2026-07-18** — Remote CI passed and a clean remote clone passed every documented runtime/source/audit gate with a clean worktree. Clean-profile Hermes installation then exposed one packaging incompatibility: slash-delimited overview prose was parsed as a support-file reference. Added a release regression contract and corrected the wording and install path.
