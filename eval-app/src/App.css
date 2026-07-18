@@ -1,0 +1,155 @@
+html,
+body,
+#root {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+}
+
+.eval-root {
+	position: fixed;
+	inset: 0;
+	display: flex;
+}
+
+.eval-canvas {
+	flex: 1;
+	position: relative;
+	min-width: 0;
+	min-height: 0;
+}
+
+.eval-canvas .tl-container,
+.eval-canvas .tldraw__editor {
+	position: absolute;
+	inset: 0;
+}
+
+.eval-panel {
+	width: 320px;
+	max-width: 40vw;
+	background: #ffffff;
+	color: #111827;
+	padding: 12px;
+	box-sizing: border-box;
+	overflow: auto;
+	border-left: 1px solid #cbd5e1;
+	box-shadow: -4px 0 18px rgb(15 23 42 / 8%);
+	z-index: 20;
+	flex-shrink: 0;
+}
+
+.eval-panel header {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-bottom: 8px;
+}
+
+.eval-panel header span {
+	color: #475569;
+	font-size: 12px;
+}
+
+.eval-panel header button,
+.eval-panel-toggle {
+	margin-left: auto;
+	background: #2563eb;
+	color: #ffffff;
+	border: 1px solid #1d4ed8;
+	border-radius: 6px;
+	padding: 6px 10px;
+	cursor: pointer;
+	font-size: 12px;
+}
+
+.eval-panel header button:focus-visible,
+.eval-panel-toggle:focus-visible,
+.eval-status:focus-visible {
+	outline: 2px solid #2563eb;
+	outline-offset: 2px;
+}
+
+.eval-panel-toggle {
+	position: fixed;
+	top: 12px;
+	right: 12px;
+	z-index: 30;
+	margin-left: 0;
+}
+
+.eval-status {
+	/* >=12px status text for a11y gate */
+	font-size: 12px;
+	line-height: 1.45;
+	/* High-contrast light theme: #111827 on #f8fafc */
+	color: #111827;
+	background: #f8fafc;
+	border: 1px solid #e2e8f0;
+	padding: 8px;
+	border-radius: 8px;
+	overflow: auto;
+	max-height: calc(100vh - 160px);
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.eval-hint {
+	font-size: 12px;
+	margin-top: 10px;
+	color: #475569;
+}
+
+.eval-error-fallback {
+	position: absolute;
+	inset: 24px;
+	display: grid;
+	place-content: center;
+	gap: 8px;
+	padding: 24px;
+	background: #ffffff;
+	color: #7f1d1d;
+	border: 2px solid #b91c1c;
+	border-radius: 10px;
+	text-align: center;
+	z-index: 100;
+}
+
+.eval-error-fallback span,
+.eval-error-fallback code {
+	color: #450a0a;
+}
+
+/* Responsive panel: stack below canvas on narrow viewports */
+@media (max-width: 720px) {
+	.eval-root {
+		flex-direction: column;
+	}
+
+	.eval-panel {
+		width: 100%;
+		max-width: none;
+		max-height: 42vh;
+		border-left: none;
+		border-top: 1px solid #cbd5e1;
+	}
+
+	.eval-status {
+		max-height: 28vh;
+	}
+}
+
+/* Reduced motion: honor user preference for transitions/animations */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}

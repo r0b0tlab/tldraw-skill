@@ -1,0 +1,11 @@
+// Intentional non-compiling input used by tests/test_stale_api_fixture.py.
+// It captures common pre-v5 migration mistakes and is never imported or built.
+import { Tldraw } from '@tldraw/tldraw'
+
+editor.createShape({ type: 'rectangle', props: { text: 'Legacy label' } })
+editor.store.getSnapshot()
+editor.exportToBlob({ format: 'png' })
+editor.batch(() => {})
+editor.setSelectedShapeIds([])
+
+export const legacyTheme = <Tldraw darkMode />

@@ -1,0 +1,36 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /eval-app
+    schedule:
+      interval: weekly
+    groups:
+      tldraw-runtime:
+        patterns:
+          - tldraw
+          - "@tldraw/*"
+
+  - package-ecosystem: npm
+    directory: /integration/sync-eval
+    schedule:
+      interval: weekly
+    groups:
+      sync-runtime:
+        patterns:
+          - tldraw
+          - "@tldraw/*"
+
+  - package-ecosystem: npm
+    directory: /integration/agent-eval
+    schedule:
+      interval: weekly
+
+  - package-ecosystem: npm
+    directory: "/integration/agent-eval/workflow-starter"
+    schedule:
+      interval: weekly
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly

@@ -1,0 +1,238 @@
+{
+  "skill": "tldraw",
+  "skill_version": "1.0.0",
+  "observed_date": "2026-07-17",
+  "observed_npm": {
+    "tldraw": "5.2.5",
+    "@tldraw/driver": "5.2.5",
+    "@tldraw/sync": "5.2.5",
+    "@tldraw/sync-core": "5.2.5",
+    "@tldraw/mermaid": "5.2.5",
+    "@tldraw/editor": "5.2.5",
+    "@tldraw/store": "5.2.5",
+    "@tldraw/tlschema": "5.2.5",
+    "@tldraw/state": "5.2.5"
+  },
+  "notes": [
+    "Re-fetch primary sources at skill update time; do not treat this snapshot as timeless.",
+    "Separate stable published package facts from monorepo main-branch facts.",
+    "Hobby-license data collection: public pages conflict — see conflicts[] and do not silently pick one wording."
+  ],
+  "conflicts": [
+    {
+      "id": "hobby-license-data-collection",
+      "topic": "Whether hobby-license production builds send data to tldraw",
+      "observed_date": "2026-07-17",
+      "wordings": [
+        {
+          "source": "https://tldraw.dev/community/license",
+          "summary": "States that under a commercial or hobby license, no information is sent to tldraw; trial pings a hash of the license key."
+        },
+        {
+          "source": "https://tldraw.dev/sdk-features/license-key",
+          "summary": "Data collection table lists Hobby as sending License ID, SDK version, and page URL; Commercial none; Trial similar analytics ping; Unlicensed may send version+URL in production."
+        },
+        {
+          "source": "https://tldraw.dev/blog/20-things-i-wish-ai-chatbots-knew-about-tldraw",
+          "summary": "Commercial license has no analytics SDK; anonymous usage via static asset requests and hobby watermark image; self-host static assets on commercial for no external requests."
+        }
+      ],
+      "agent_rule": "Surface the conflict; re-read live pages before compliance claims; prefer the stricter privacy assumption when the user needs guarantees."
+    }
+  ],
+  "sources": [
+    {
+      "id": "llms-index",
+      "url": "https://tldraw.dev/llms.txt",
+      "title": "tldraw SDK llms.txt index",
+      "observed_date": "2026-07-17",
+      "sha256": "f214e4f7821a98dcd0e40ee3c72d82092f3e8e68cc3142a4edcbeb59cf93d072",
+      "bytes": 19916,
+      "notes": "71 sdk-features links observed in index parse"
+    },
+    {
+      "id": "llms-docs",
+      "url": "https://tldraw.dev/llms-docs.txt",
+      "title": "SDK features corpus",
+      "observed_date": "2026-07-17",
+      "sha256": "6f84d7859ec8a4a72cefb53965ca5fba9c4043d0f44320c45618ee831c92fd9a",
+      "bytes": 687069
+    },
+    {
+      "id": "llms-examples",
+      "url": "https://tldraw.dev/llms-examples.txt",
+      "title": "Examples corpus",
+      "observed_date": "2026-07-17",
+      "sha256": "b36b296423781c5eb5e93bc9defe7ac9a92823a68c7b4aa7441ecd6f1aaa4657",
+      "bytes": 1162511
+    },
+    {
+      "id": "llms-releases",
+      "url": "https://tldraw.dev/llms-releases.txt",
+      "title": "Releases corpus",
+      "observed_date": "2026-07-17",
+      "sha256": "46509ec7d8414c20f332453ce3e6d0e19c00655ed4d5f9c49b7103378bcf3de7",
+      "bytes": 185680
+    },
+    {
+      "id": "anti-hallucination-article",
+      "url": "https://tldraw.dev/blog/20-things-i-wish-ai-chatbots-knew-about-tldraw",
+      "title": "20 things I wish AI chatbots knew about tldraw",
+      "observed_date": "2026-07-17",
+      "notes": "Primary anti-hallucination checklist; dated June 2026 in article prose"
+    },
+    {
+      "id": "license-community",
+      "url": "https://tldraw.dev/community/license",
+      "title": "License (community)",
+      "observed_date": "2026-07-17"
+    },
+    {
+      "id": "license-key-feature",
+      "url": "https://tldraw.dev/sdk-features/license-key",
+      "title": "License key feature",
+      "observed_date": "2026-07-17"
+    },
+    {
+      "id": "legal-tldraw-license",
+      "url": "https://tldraw.dev/legal/tldraw-license",
+      "title": "tldraw license legal text",
+      "observed_date": "2026-07-17"
+    },
+    {
+      "id": "quick-start",
+      "url": "https://tldraw.dev/quick-start",
+      "title": "Quick start",
+      "observed_date": "2026-07-17"
+    },
+    {
+      "id": "docs-editor",
+      "url": "https://tldraw.dev/docs/editor",
+      "title": "Editor guide",
+      "observed_date": "2026-07-17"
+    },
+    {
+      "id": "docs-driver",
+      "url": "https://tldraw.dev/docs/driver",
+      "title": "Driving the editor",
+      "observed_date": "2026-07-17"
+    },
+    {
+      "id": "docs-sync",
+      "url": "https://tldraw.dev/docs/sync",
+      "title": "tldraw sync",
+      "observed_date": "2026-07-17"
+    },
+    {
+      "id": "docs-ai",
+      "url": "https://tldraw.dev/docs/ai",
+      "title": "AI integrations",
+      "observed_date": "2026-07-17"
+    },
+    {
+      "id": "docs-mermaid",
+      "url": "https://tldraw.dev/docs/mermaid",
+      "title": "Mermaid diagrams",
+      "observed_date": "2026-07-17"
+    },
+    {
+      "id": "starter-kits-overview",
+      "url": "https://tldraw.dev/starter-kits/overview",
+      "title": "Starter kits overview",
+      "observed_date": "2026-07-17"
+    },
+    {
+      "id": "file-ts",
+      "url": "https://raw.githubusercontent.com/tldraw/tldraw/v5.2.5/packages/tldraw/src/lib/utils/tldr/file.ts",
+      "title": "tldr file parse/serialize source",
+      "observed_date": "2026-07-17",
+      "notes": "TldrawFile fields: tldrawFileFormatVersion, schema, records; serializeTldrawJson; parseTldrawJsonFile"
+    },
+    {
+      "id": "driver-readme",
+      "url": "https://raw.githubusercontent.com/tldraw/tldraw/v5.2.5/packages/driver/README.md",
+      "title": "@tldraw/driver README",
+      "observed_date": "2026-07-17"
+    },
+    {
+      "id": "repo-agents",
+      "url": "https://github.com/tldraw/tldraw/blob/main/AGENTS.md",
+      "title": "tldraw monorepo AGENTS.md",
+      "observed_date": "2026-07-17"
+    },
+    {
+      "id": "npm-tldraw-5.2.5",
+      "url": "https://registry.npmjs.org/tldraw/5.2.5",
+      "title": "npm tldraw 5.2.5 manifest",
+      "observed_date": "2026-07-17",
+      "version": "5.2.5"
+    },
+    {
+      "id": "legacy-v2-tldr-fixture",
+      "url": "https://raw.githubusercontent.com/tldraw/tldraw/v5.2.5/apps/vscode/extension/examples/v2.tldr",
+      "title": "Official legacy v2 .tldr fixture",
+      "observed_date": "2026-07-17",
+      "sha256": "dbe86d7a991493f29bb32189d7b1704494b5b4a70fcaaf8f01ba20b12872c385",
+      "bytes": 100420,
+      "notes": "Current tldraw@5.2.5 parser accepted and migrated this fixture to a 7-record store in the runtime harness."
+    },
+    {
+      "id": "migration-skill",
+      "url": "https://tldraw.dev/releases/migration-skill",
+      "title": "Official migration skill",
+      "observed_date": "2026-07-17"
+    },
+    {
+      "id": "migration-skill-source",
+      "url": "https://github.com/tldraw/tldraw/tree/main/skills/tldraw-migrate",
+      "title": "Canonical tldraw-migrate skill source",
+      "observed_date": "2026-07-18",
+      "notes": "Experimental upstream agent skill; inspect or install explicitly because Hermes Hub search did not expose it during verification."
+    },
+    {
+      "id": "hermes-creating-skills",
+      "url": "https://hermes-agent.nousresearch.com/docs/developer-guide/creating-skills",
+      "title": "Hermes creating skills",
+      "observed_date": "2026-07-17"
+    },
+    {
+      "id": "hermes-skills-feature",
+      "url": "https://hermes-agent.nousresearch.com/docs/user-guide/features/skills",
+      "title": "Hermes skills feature guide",
+      "observed_date": "2026-07-17"
+    },
+    {
+      "id": "hermes-work-with-skills",
+      "url": "https://hermes-agent.nousresearch.com/docs/guides/work-with-skills",
+      "title": "Hermes work with skills",
+      "observed_date": "2026-07-17"
+    },
+    {
+      "id": "sitemap-counts",
+      "url": "https://tldraw.dev/sitemap.xml",
+      "title": "Docs sitemap counts",
+      "observed_date": "2026-07-17",
+      "notes": "sdk-features=71, docs=14, starter-kits=8, large reference namespace"
+    }
+  ],
+  "packages_monorepo_classification": {
+    "public_or_published": [
+      "tldraw",
+      "editor",
+      "store",
+      "tlschema",
+      "state",
+      "state-react",
+      "sync",
+      "sync-core",
+      "driver",
+      "mermaid",
+      "utils",
+      "validate",
+      "assets",
+      "create-tldraw"
+    ],
+    "cli_template_infra": ["create-tldraw"],
+    "internal_excluded": ["dotcom-shared", "worker-shared", "namespaced-tldraw"]
+  }
+}

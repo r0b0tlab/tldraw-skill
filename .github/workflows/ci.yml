@@ -1,0 +1,121 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: |
+            eval-app/package-lock.json
+            integration/sync-eval/package-lock.json
+            integration/agent-eval/package-lock.json
+            integration/agent-eval/workflow-starter/package-lock.json
+
+      - name: Python unit and structural checks
+        env:
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: |
+          python tests/validate_skill.py skills/tldraw
+          python -m unittest discover -s tests -p 'test_*.py' -v
+          python tests/verify_source_manifest.py
+          python tests/verify_source_manifest.py --network
+          python tests/verify_upstream_dry_run.py
+          python tests/verify_upstream_dry_run.py --network
+
+      - name: Current official capability coverage
+        run: |
+          curl --fail --location --retry 3 --retry-delay 2 \
+            https://tldraw.dev/llms.txt --output /tmp/tldraw-llms.txt
+          python tests/check_capability_coverage.py \
+            --index /tmp/tldraw-llms.txt \
+            --map tests/capability-map.json \
+            --skill skills/tldraw
+
+      - name: Install browser dependencies
+        run: npx --yes playwright@1.61.1 install --with-deps chromium
+
+      - name: Eval app — install and runtime verification
+        working-directory: eval-app
+        run: |
+          npm ci
+          npm run test
+          npm run verify
+          npm run benchmark
+          npm run visual:scenarios
+
+      - name: Sync harness — install, build, and two-client integration
+        working-directory: integration/sync-eval
+        run: |
+          npm ci
+          npm run typecheck
+          npm run build
+          npm run test:unit
+          npm run test:integration
+
+      - name: Agent and starter harness — install and evaluate
+        working-directory: integration/agent-eval
+        run: |
+          npm ci
+          npm run eval
+
+      - name: Aggregate workflow evidence
+        run: |
+          python tests/run_workflow_eval.py
+          python -m unittest -v tests.test_workflow_eval
+
+      - name: Upload runtime evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tldraw-skill-runtime-evidence
+          if-no-files-found: warn
+          retention-days: 14
+          path: |
+            eval-app/artifacts/
+            tests/results/
+            integration/sync-eval/artifacts/
+
+  dependency-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: |
+            eval-app/package-lock.json
+            integration/sync-eval/package-lock.json
+            integration/agent-eval/package-lock.json
+            integration/agent-eval/workflow-starter/package-lock.json
+      - name: Audit production dependency trees
+        run: |
+          npm audit --omit=dev --audit-level=high --prefix eval-app
+          npm audit --omit=dev --audit-level=high --prefix integration/sync-eval
+          npm audit --omit=dev --audit-level=high --prefix integration/agent-eval
+          npm audit --omit=dev --audit-level=high --prefix integration/agent-eval/workflow-starter

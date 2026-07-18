@@ -1,0 +1,4 @@
+/* Global reset; layout lives in App.css */
+* {
+	box-sizing: border-box;
+}

@@ -1,0 +1,17 @@
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+.wrangler/
+**/.wrangler/
+.tsbuild/
+**/.tsbuild/
+artifacts/
+**/artifacts/
+.yarn/
+.dev.vars
+*.dev.vars
+.env
+.env.*
+!.env.example
+*.log

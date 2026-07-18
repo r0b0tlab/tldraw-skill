@@ -1,0 +1,191 @@
+{
+  "version": 1,
+  "skill": "tldraw",
+  "description": "End-to-end workflow evaluation cases (Phases 3–4). Each run must save real command evidence under tests/results/.",
+  "results_dir": "tests/results",
+  "cases": [
+    {
+      "id": "wf-tldr-roundtrip-builtin",
+      "category": "build-runtime",
+      "prompt": "Create a .tldr with pages, geo/text/note, bound arrows, frame/group, and an image asset using a mounted Editor; parse and reload.",
+      "expected_routes": [
+        "references/data-files-assets-export-mermaid.md",
+        "references/diagram-authoring.md"
+      ],
+      "required_commands": [
+        "typecheck_or_build",
+        "serializeTldrawJson",
+        "parseTldrawJsonFile"
+      ],
+      "assertions": [
+        "fixture_has_tldrawFileFormatVersion_schema_records",
+        "reload_preserves_shape_ids_types_bindings",
+        "no_python_record_assembly",
+        "no_browser_console_errors_if_browser_used"
+      ],
+      "artifacts": [".tldr", "optional_png"]
+    },
+    {
+      "id": "wf-tldr-custom-schema",
+      "category": "build-runtime",
+      "prompt": "Round-trip a document with a registered custom shape through serialize/parse/reload in the same app.",
+      "expected_routes": [
+        "references/shapes-tools-bindings.md",
+        "references/data-files-assets-export-mermaid.md"
+      ],
+      "assertions": [
+        "custom_shape_registered_on_schema",
+        "warns_not_portable_to_tldraw_com",
+        "parse_uses_app_schema"
+      ]
+    },
+    {
+      "id": "wf-diagram-authoring",
+      "category": "build-runtime",
+      "prompt": "Author a flowchart architecture diagram with measured layout and bound arrows; export PNG.",
+      "expected_routes": [
+        "references/diagram-authoring.md"
+      ],
+      "assertions": [
+        "uses_geo_and_toRichText",
+        "bindings_for_arrows",
+        "camera_fit_after_layout",
+        "visual_review_no_overlaps_if_vision_available"
+      ]
+    },
+    {
+      "id": "wf-driver-automation",
+      "category": "build-runtime",
+      "prompt": "Use @tldraw/driver to simulate draw tool input and transform selection.",
+      "expected_routes": [
+        "references/editor-store-state-driver.md"
+      ],
+      "assertions": [
+        "Driver_constructed_with_editor",
+        "dispose_called",
+        "shapes_created_or_transformed"
+      ]
+    },
+    {
+      "id": "wf-shapes-tools-bindings-ui-a11y",
+      "category": "build-runtime",
+      "prompt": "Implement custom shape, tool with child state, binding, UI override, and a11y checks including hideUi shortcut impact.",
+      "expected_routes": [
+        "references/shapes-tools-bindings.md",
+        "references/ui-accessibility-internationalization.md"
+      ],
+      "assertions": [
+        "migrations_and_validators_present",
+        "svg_export_path_for_custom_shape",
+        "keyboard_or_sr_path_documented",
+        "hideUi_shortcut_warning",
+        "error_boundary_fallback_rendered"
+      ]
+    },
+    {
+      "id": "wf-persistence-assets-export-mermaid",
+      "category": "build-runtime",
+      "prompt": "Demonstrate persistenceKey, snapshot APIs, asset upload/resolve, SVG/PNG export, and Mermaid conversion.",
+      "expected_routes": [
+        "references/data-files-assets-export-mermaid.md"
+      ],
+      "assertions": [
+        "indexeddb_persistence_not_localStorage",
+        "standalone_getSnapshot_loadSnapshot",
+        "toImage_or_getSvgString",
+        "mermaid_package_used",
+        "refresh_persistence_verified_or_labeled"
+      ]
+    },
+    {
+      "id": "wf-sync-two-client",
+      "category": "sync",
+      "prompt": "Run two clients against one TLSocketRoom; verify convergence, presence, and restart persistence.",
+      "expected_routes": [
+        "references/sync-collaboration.md"
+      ],
+      "assertions": [
+        "one_room_instance_per_document",
+        "schema_parity",
+        "two_client_convergence",
+        "restart_preserves_document",
+        "not_demo_server_for_claimed_production",
+        "room_isolation_and_auth_rejection",
+        "upload_auth_and_media_limits",
+        "cors_and_bind_fail_closed"
+      ]
+    },
+    {
+      "id": "wf-ai-agent-kit",
+      "category": "ai",
+      "prompt": "Customize Agent starter: custom prompt part + action util with sanitization; secure provider key handling.",
+      "expected_routes": [
+        "references/ai-and-starter-kits.md"
+      ],
+      "assertions": [
+        "official_kit_base",
+        "action_sanitization_tests",
+        "no_provider_secret_in_client_bundle",
+        "live_provider_call_or_explicitly_unverified"
+      ]
+    },
+    {
+      "id": "wf-migration",
+      "category": "migration",
+      "prompt": "Migrate a project across a breaking tldraw boundary using official migration guidance; typecheck clean.",
+      "expected_routes": [
+        "references/testing-debugging-migrations-upstream.md",
+        "references/source-and-version-policy.md"
+      ],
+      "assertions": [
+        "versions_detected",
+        "packages_aligned",
+        "typecheck_passes",
+        "no_stale_api_patterns_in_app_code"
+      ]
+    },
+    {
+      "id": "wf-stale-api-repair",
+      "category": "build-runtime",
+      "prompt": "Repair intentional stale tldraw APIs in a fixture app and verify build.",
+      "expected_routes": [
+        "references/source-and-version-policy.md"
+      ],
+      "assertions": [
+        "no_legacy_at_tldraw_tldraw_import",
+        "no_exportToBlob",
+        "no_editor_batch",
+        "no_props_text_for_labels",
+        "colorScheme_not_darkMode_prop",
+        "build_passes"
+      ]
+    },
+    {
+      "id": "wf-production-security",
+      "category": "build-runtime",
+      "prompt": "Production build with license key config, dev bridge disabled, CSP/upload notes, large-document baseline recorded.",
+      "expected_routes": [
+        "references/performance-security-licensing-deployment.md"
+      ],
+      "assertions": [
+        "license_key_configured_or_warning_documented",
+        "dev_bridge_absent_in_prod",
+        "no_provider_secrets_in_bundle",
+        "performance_baseline_or_unknown_labeled"
+      ]
+    },
+    {
+      "id": "wf-upstream-dry-run",
+      "category": "migration",
+      "prompt": "Dry-run contribution workflow against tldraw monorepo AGENTS.md (targeted test plan only).",
+      "expected_routes": [
+        "references/testing-debugging-migrations-upstream.md"
+      ],
+      "assertions": [
+        "yarn_typecheck_not_bare_tsc",
+        "targeted_test_plan",
+        "respects_contribution_policy"
+      ]
+    }
+  ]
+}

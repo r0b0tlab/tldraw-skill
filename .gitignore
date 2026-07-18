@@ -1,0 +1,55 @@
+# Dependencies and build outputs
+node_modules/
+dist/
+build/
+.turbo/
+.next/
+.vite/
+*.tsbuildinfo
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Test and agent outputs
+tests/results/
+tests/fixtures/*.generated.*
+eval-app/artifacts/
+integration/**/artifacts/
+eval-app/node_modules/
+eval-app/dist/
+playwright-report/
+test-results/
+coverage/
+.wrangler/
+.tsbuild/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+# Local agent planning state
+.hermes/
+
+# Caches (official docs cache must live under XDG, never commit)
+.cache/
+*.etag
+
+# Secrets and env
+.env
+.env.*
+!.env.example
+*.pem
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Logs
+*.log
+npm-debug.log*
+yarn-error.log*

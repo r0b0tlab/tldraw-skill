@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-07-18T21:34:35.757Z",
+  "command": "npm run benchmark --prefix eval-app",
+  "runtime": {
+    "tldraw": "5.2.5",
+    "browser": "HeadlessChrome/149.0.7827.55",
+    "shape_target": 3999,
+    "shape_count": 3999,
+    "max_shapes_per_page": 4000
+  },
+  "measurements_ms": {
+    "create_3999": 76.5,
+    "update_100": 6.399999976158142,
+    "two_animation_frames_after_workload": 579.3000000119209
+  },
+  "result": "pass",
+  "interpretation": "The mounted 5.2.5 editor completed the configured 3,999-shape workload and 100-shape update below the default 4,000-shape page cap on this machine.",
+  "limitations": [
+    "These timings are machine-specific evidence, not universal performance guarantees.",
+    "CI and release gates rerun the benchmark and upload the generated latest.json artifact.",
+    "The default maxShapesPerPage value is configurable and is not an unlimited-capacity claim."
+  ]
+}

@@ -1,0 +1,460 @@
+{
+  "cases": [
+    {
+      "id": "pos-tldr-flowchart",
+      "response": {
+        "activate_tldraw": true,
+        "evidence": {
+          "inspect_project_or_scaffold_first": "First inspect the existing project and installed package versions; scaffold a real artifact app only if no suitable project exists.",
+          "uses_bindings_for_arrows": "Connect arrows to nodes with a public binding rather than relying on visual overlap.",
+          "uses_editor_serializer_not_python_records": "Create records through a live Editor and export with serializeTldrawJson, never raw Python-generated records.",
+          "uses_geo_and_toRichText": "Use type geo for built-in flowchart nodes and toRichText for their labels."
+        },
+        "first_step": "Run inspect_project.py on the project to inspect its exact installed tldraw/@tldraw package versions and determine whether to reuse the app or scaffold an artifact-only app.",
+        "reason": "The prompt explicitly requests a tldraw .tldr flowchart, requiring version-aware diagram authoring and official file serialization.",
+        "routes": [
+          "diagram-authoring.md",
+          "shapes-tools-bindings.md",
+          "data-files-assets-export-mermaid.md"
+        ]
+      },
+      "session_skill_meta": {
+        "loaded_skill_names": [
+          "tldraw"
+        ],
+        "skill_load_proof": "session_tool_trace",
+        "skill_loaded": true
+      }
+    },
+    {
+      "id": "pos-add-to-react-app",
+      "response": {
+        "activate_tldraw": true,
+        "evidence": {
+          "container_has_explicit_size": "Give the full-page canvas container explicit dimensions such as width: 100% and height: 100%.",
+          "imports_tldraw_css": "Import tldraw.css so the whiteboard UI and canvas are styled.",
+          "installs_tldraw_not_legacy_alias": "Install tldraw, not the legacy @tldraw/tldraw alias.",
+          "runs_inspect_project": "Run inspect_project before implementation to establish the project type and exact installed package versions."
+        },
+        "first_step": "Run inspect_project on the existing Vite React project to identify its package manager, React peers, and installed tldraw/@tldraw package versions before giving API advice.",
+        "reason": "The prompt explicitly requests integrating tldraw into an existing React app and needs the existing-app setup, CSS, and full-size container route.",
+        "routes": [
+          "project-routing-and-starters.md"
+        ]
+      },
+      "session_skill_meta": {
+        "loaded_skill_names": [
+          "tldraw"
+        ],
+        "skill_load_proof": "session_tool_trace",
+        "skill_loaded": true
+      }
+    },
+    {
+      "id": "pos-driver-automate",
+      "response": {
+        "activate_tldraw": true,
+        "evidence": {
+          "calls_dispose": "not applicable: the prompt does not mention teardown or require a dispose call.",
+          "screen_vs_page_coordinates_aware": "Drawing and selecting with Driver pointer input requires distinguishing screen coordinates from page coordinates.",
+          "uses_Driver_from_at_tldraw_driver": "The request explicitly names @tldraw/driver; its Driver API is the relevant automation surface."
+        },
+        "first_step": "Inspect the project and exact installed tldraw/@tldraw/driver package versions before giving API advice.",
+        "reason": "The prompt explicitly requests tldraw Editor test automation through the public Driver package.",
+        "routes": [
+          "editor-store-state-driver.md"
+        ]
+      },
+      "session_skill_meta": {
+        "loaded_skill_names": [
+          "tldraw"
+        ],
+        "skill_load_proof": "session_tool_trace",
+        "skill_loaded": true
+      }
+    },
+    {
+      "id": "pos-custom-shape-tool-binding",
+      "response": {
+        "activate_tldraw": true,
+        "evidence": {
+          "includes_migrations_and_validators": "A custom shape should define a props validator and migration sequence.",
+          "registers_BindingUtil": "A custom binding requires a BindingUtil registered with the editor.",
+          "registers_TLGlobalShapePropsMap": "Custom shape typing requires declaration merging through TLGlobalShapePropsMap.",
+          "toolbar_or_ui_entry": "A user-selectable custom tool normally needs a toolbar or equivalent UI entry."
+        },
+        "first_step": "Inspect the project and exact installed tldraw/@tldraw package versions before giving API advice.",
+        "reason": "The prompt explicitly requests tldraw custom shapes, hierarchical tools, and bindings.",
+        "routes": [
+          "shapes-tools-bindings.md"
+        ]
+      },
+      "session_skill_meta": {
+        "loaded_skill_names": [
+          "tldraw"
+        ],
+        "skill_load_proof": "session_tool_trace",
+        "skill_loaded": true
+      }
+    },
+    {
+      "id": "pos-export-svg-png",
+      "response": {
+        "activate_tldraw": true,
+        "evidence": {
+          "rejects_exportToBlob_as_current_api": "exportToBlob is stale and should not be recommended as a current Editor API.",
+          "uses_toImage_or_getSvgString_family": "Use the current toImage family for PNG and getSvgString/getSvgElement from the getSvg family for SVG, after version inspection."
+        },
+        "first_step": "Inspect the project and exact installed tldraw/@tldraw package versions before selecting export APIs.",
+        "reason": "The prompt explicitly requests SVG and PNG export from the current tldraw page, which is covered by the skill\u2019s export route.",
+        "routes": [
+          "data-files-assets-export-mermaid.md"
+        ]
+      },
+      "session_skill_meta": {
+        "loaded_skill_names": [
+          "tldraw"
+        ],
+        "skill_load_proof": "session_tool_trace",
+        "skill_loaded": true
+      }
+    },
+    {
+      "id": "pos-persist-assets-snapshots",
+      "response": {
+        "activate_tldraw": true,
+        "evidence": {
+          "asset_store_upload_resolve": "TLAssetStore supplies upload and resolve behavior for persisted asset records and their retrievable sources.",
+          "getSnapshot_loadSnapshot_standalone": "getSnapshot and loadSnapshot are standalone functions operating on the store, not Editor methods.",
+          "persistenceKey_is_indexeddb_not_localStorage": "persistenceKey uses indexeddb persistence with cross-tab sync, not localStorage."
+        },
+        "first_step": "Inspect the project and exact installed tldraw/@tldraw package versions with inspect_project.py and doctor.py before giving API advice.",
+        "reason": "The prompt explicitly requests tldraw persistence, asset storage, and snapshot save/load, all covered by the skill\u2019s data/assets/persistence route.",
+        "routes": [
+          "data-files-assets-export-mermaid.md"
+        ]
+      },
+      "session_skill_meta": {
+        "loaded_skill_names": [
+          "tldraw"
+        ],
+        "skill_load_proof": "session_tool_trace",
+        "skill_loaded": true
+      }
+    },
+    {
+      "id": "pos-multiplayer-sync",
+      "response": {
+        "activate_tldraw": true,
+        "evidence": {
+          "demo_server_not_for_production": "A demo sync server is suitable for prototyping, not production; production multiplayer should use a secured self-hosted deployment.",
+          "rejects_invented_yjs_package_as_default": "Use official @tldraw/sync; do not substitute the invented @tldraw/yjs package.",
+          "schema_parity_client_server": "The client and server must use matching schema definitions and compatible package versions.",
+          "uses_useSync_or_TLSocketRoom": "Use useSync on the client and TLSocketRoom on the self-hosted server, subject to installed-version APIs."
+        },
+        "first_step": "Inspect the project and exact installed tldraw/@tldraw/* package versions with inspect_project.py and doctor.py before giving API advice.",
+        "reason": "The prompt explicitly requests self-hosted multiplayer using the official @tldraw/sync package.",
+        "routes": [
+          "sync-collaboration.md"
+        ]
+      },
+      "session_skill_meta": {
+        "loaded_skill_names": [
+          "tldraw"
+        ],
+        "skill_load_proof": "session_tool_trace",
+        "skill_loaded": true
+      }
+    },
+    {
+      "id": "pos-agent-starter",
+      "response": {
+        "activate_tldraw": true,
+        "evidence": {
+          "action_sanitization": "A new agent action must sanitise untrusted action inputs and outputs before applying them.",
+          "provider_keys_server_side": "Any model-provider key must remain server-side and out of the client bundle.",
+          "starts_from_official_kit": "The request explicitly names the official tldraw Agent starter kit."
+        },
+        "first_step": "Inspect the project and exact installed tldraw/@tldraw package versions before giving API advice.",
+        "reason": "The prompt explicitly requests customization of the official tldraw Agent starter kit.",
+        "routes": [
+          "ai-and-starter-kits.md"
+        ]
+      },
+      "session_skill_meta": {
+        "loaded_skill_names": [
+          "tldraw"
+        ],
+        "skill_load_proof": "session_tool_trace",
+        "skill_loaded": true
+      }
+    },
+    {
+      "id": "pos-mermaid",
+      "response": {
+        "activate_tldraw": true,
+        "evidence": {
+          "uses_at_tldraw_mermaid": "The requested integration explicitly names @tldraw/mermaid.",
+          "version_aligned_with_tldraw": "Inspect the installed package version first and keep @tldraw/mermaid aligned with tldraw."
+        },
+        "first_step": "Inspect the project and exact installed tldraw/@tldraw package versions before giving API advice.",
+        "reason": "The prompt explicitly requests Mermaid conversion into tldraw shapes using a published @tldraw package.",
+        "routes": [
+          "data-files-assets-export-mermaid.md",
+          "diagram-authoring.md"
+        ]
+      },
+      "session_skill_meta": {
+        "loaded_skill_names": [
+          "tldraw"
+        ],
+        "skill_load_proof": "session_tool_trace",
+        "skill_loaded": true
+      }
+    },
+    {
+      "id": "pos-migrate",
+      "response": {
+        "activate_tldraw": true,
+        "evidence": {
+          "aligns_all_package_versions": "A major-version upgrade requires detecting version skew and aligning tldraw with every @tldraw/* package.",
+          "no_any_or_internal_shims": "The skill requires public APIs and forbids masking removed APIs with any or @internal shims.",
+          "prefers_tldraw_migrate_skill": "The user explicitly asks to migrate a tldraw app from v4 to v5."
+        },
+        "first_step": "Inspect the project and exact installed tldraw/@tldraw package versions with inspect_project.py and doctor.py before giving migration API advice.",
+        "reason": "The prompt explicitly requests a tldraw major-version migration, a positive activation trigger requiring version-aware migration guidance.",
+        "routes": [
+          "source-and-version-policy.md",
+          "testing-debugging-migrations-upstream.md"
+        ]
+      },
+      "session_skill_meta": {
+        "loaded_skill_names": [
+          "tldraw"
+        ],
+        "skill_load_proof": "session_tool_trace",
+        "skill_loaded": true
+      }
+    },
+    {
+      "id": "pos-upstream-monorepo",
+      "response": {
+        "activate_tldraw": true,
+        "evidence": {
+          "reads_repo_AGENTS_md": "Upstream monorepo work begins by reading the repository AGENTS.md.",
+          "targeted_tests_first": "Begin verification with the targeted packages/editor test before broader checks.",
+          "yarn_not_bare_tsc": "The monorepo uses yarn 4 commands and explicitly forbids bare tsc."
+        },
+        "first_step": "Read the repository AGENTS.md, then inspect the monorepo and installed package versions with inspect_project.py before debugging packages/editor.",
+        "reason": "The prompt explicitly requests bug fixing inside the upstream tldraw/tldraw monorepo, a positive activation trigger routed to upstream debugging guidance.",
+        "routes": [
+          "testing-debugging-migrations-upstream.md"
+        ]
+      },
+      "session_skill_meta": {
+        "loaded_skill_names": [
+          "tldraw"
+        ],
+        "skill_load_proof": "session_tool_trace",
+        "skill_loaded": true
+      }
+    },
+    {
+      "id": "pos-stale-code-repair",
+      "response": {
+        "activate_tldraw": true,
+        "evidence": {
+          "colorScheme": "Replace the darkMode prop with colorScheme using light, dark, or system.",
+          "geo_plus_toRichText": "A rectangle is a geo shape using props.geo, while text uses richText produced by toRichText rather than props.text.",
+          "rewrites_to_tldraw_package": "Replace the stale @tldraw/tldraw import with the published tldraw package, subject to the installed version.",
+          "run_and_setSelectedShapes": "Replace editor.batch with editor.run and setSelectedShapeIds with setSelectedShapes.",
+          "standalone_getSnapshot": "getSnapshot is a standalone function applied to the store, not editor.store.getSnapshot().",
+          "toImage_family": "Replace exportToBlob with an installed-version API from the toImage family, such as toImage or toImageDataUrl."
+        },
+        "first_step": "Run inspect_project.py and doctor.py to identify the project class and exact installed tldraw/@tldraw/* versions before giving API advice.",
+        "reason": "This is an explicit stale tldraw SDK migration spanning package/version policy, shapes and rich text, snapshots and export, Editor transactions and selection, and theming.",
+        "routes": [
+          "source-and-version-policy.md",
+          "shapes-tools-bindings.md",
+          "data-files-assets-export-mermaid.md",
+          "editor-store-state-driver.md",
+          "ui-accessibility-internationalization.md"
+        ]
+      },
+      "session_skill_meta": {
+        "loaded_skill_names": [
+          "tldraw"
+        ],
+        "skill_load_proof": "session_tool_trace",
+        "skill_loaded": true
+      }
+    },
+    {
+      "id": "neg-generic-flowchart",
+      "response": {
+        "activate_tldraw": false,
+        "evidence": {
+          "does_not_auto_select_tldraw_for_generic_diagram": "This is a generic diagram request with no mention of tldraw.",
+          "may_offer_visual_artifact_or_ask_preference": "Ask whether they prefer a visual artifact or a text-based flowchart."
+        },
+        "first_step": "Ask whether they prefer a text/Mermaid flowchart or a visual canvas artifact.",
+        "reason": "A generic request to draw a simple flowchart does not specifically require the tldraw SDK or canvas.",
+        "routes": []
+      },
+      "session_skill_meta": {
+        "loaded_skill_names": [],
+        "skill_load_proof": "session_tool_trace",
+        "skill_loaded": false
+      }
+    },
+    {
+      "id": "neg-excalidraw",
+      "response": {
+        "activate_tldraw": false,
+        "evidence": {
+          "does_not_activate_tldraw_for_excalidraw_request": "The prompt explicitly requests an excalidraw diagram and contains no tldraw task."
+        },
+        "first_step": "Use an Excalidraw-specific workflow or tool.",
+        "reason": "The request explicitly targets Excalidraw, not tldraw, so the installed tldraw skill should not activate.",
+        "routes": []
+      },
+      "session_skill_meta": {
+        "loaded_skill_names": [],
+        "skill_load_proof": "session_tool_trace",
+        "skill_loaded": false
+      }
+    },
+    {
+      "id": "neg-canvas2d-game",
+      "response": {
+        "activate_tldraw": false,
+        "evidence": {
+          "does_not_activate_on_canvas_keyword_alone": "The terms canvas and 2d refer to HTML Canvas 2D; no tldraw SDK, Editor, shapes, store, or .tldr functionality is requested."
+        },
+        "first_step": "Use a generic HTML Canvas 2D game-development workflow.",
+        "reason": "The request concerns the browser-native Canvas API, not tldraw.",
+        "routes": []
+      },
+      "session_skill_meta": {
+        "loaded_skill_names": [],
+        "skill_load_proof": "session_tool_trace",
+        "skill_loaded": false
+      }
+    },
+    {
+      "id": "neg-unrelated-react",
+      "response": {
+        "activate_tldraw": false,
+        "evidence": {
+          "no_tldraw_activation": "The prompt concerns a React useEffect infinite loop and does not mention tldraw."
+        },
+        "first_step": "Inspect the useEffect dependency array and any state updates it triggers.",
+        "reason": "This is a generic React debugging request with no tldraw-specific context.",
+        "routes": []
+      },
+      "session_skill_meta": {
+        "loaded_skill_names": [],
+        "skill_load_proof": "session_tool_trace",
+        "skill_loaded": false
+      }
+    },
+    {
+      "id": "neg-collab-text-editor",
+      "response": {
+        "activate_tldraw": false,
+        "evidence": {
+          "does_not_activate_for_generic_collab_text": "The target is a rich-text document editor, explicitly not a whiteboard, so the tldraw skill is not applicable."
+        },
+        "first_step": "Inspect the project\u2019s existing rich-text editor and collaboration stack, not tldraw.",
+        "reason": "The request concerns multiplayer cursors in a generic collaborative document editor and explicitly excludes a whiteboard.",
+        "routes": []
+      },
+      "session_skill_meta": {
+        "loaded_skill_names": [],
+        "skill_load_proof": "session_tool_trace",
+        "skill_loaded": false
+      }
+    },
+    {
+      "id": "adv-yjs-hallucination",
+      "response": {
+        "activate_tldraw": true,
+        "evidence": {
+          "may_mention_optional_third_party_bridges_without_inventing_apis": "A third-party Yjs bridge may be mentioned as an optional custom integration, without claiming a tldraw-provided bridge API.",
+          "points_to_at_tldraw_sync": "The official collaboration package is @tldraw/sync, subject to installed-version verification.",
+          "rejects_at_tldraw_yjs": "@tldraw/yjs is not a documented public tldraw package and must be rejected as invented."
+        },
+        "first_step": "Inspect the project and exact installed tldraw/@tldraw/* package versions before giving API advice.",
+        "reason": "The prompt explicitly requests tldraw multiplayer integration but names an invented package/API, so the sync route should correct it.",
+        "routes": [
+          "sync-collaboration.md"
+        ]
+      },
+      "session_skill_meta": {
+        "loaded_skill_names": [
+          "tldraw"
+        ],
+        "skill_load_proof": "session_tool_trace",
+        "skill_loaded": true
+      }
+    },
+    {
+      "id": "adv-mit-license-claim",
+      "response": {
+        "activate_tldraw": true,
+        "evidence": {
+          "does_not_invent_revenue_threshold": "Do not invent a revenue threshold; verify any eligibility terms against current official licensing documentation.",
+          "production_requires_license_key": "A valid license key is required for production; localhost development typically does not require one.",
+          "states_source_available_not_mit": "The tldraw SDK is source-available under the tldraw license, not MIT."
+        },
+        "first_step": "Open performance-security-licensing-deployment.md and verify the current official licensing terms.",
+        "reason": "The prompt explicitly asks about tldraw SDK licensing and production deployment.",
+        "routes": [
+          "performance-security-licensing-deployment.md"
+        ]
+      },
+      "session_skill_meta": {
+        "loaded_skill_names": [
+          "tldraw"
+        ],
+        "skill_load_proof": "session_tool_trace",
+        "skill_loaded": true
+      }
+    },
+    {
+      "id": "adv-python-tldr",
+      "response": {
+        "activate_tldraw": true,
+        "evidence": {
+          "refuses_raw_python_semantic_generation": "The artifact policy says to forbid raw python generation of production .tldr records because structural JSON is not semantic validation.",
+          "requires_editor_serialize_path": "Create records through a live Editor, then use serializeTldrawJson and parse with the matching app schema."
+        },
+        "first_step": "Inspect the project and exact installed tldraw/@tldraw package versions before giving API guidance.",
+        "reason": "The prompt explicitly requests production .tldr generation, which activates the skill; its artifact policy rejects raw-record generation and requires the official Editor serialization path.",
+        "routes": [
+          "data-files-assets-export-mermaid.md"
+        ]
+      },
+      "session_skill_meta": {
+        "loaded_skill_names": [
+          "tldraw"
+        ],
+        "skill_load_proof": "session_tool_trace",
+        "skill_loaded": true
+      }
+    }
+  ],
+  "provenance": {
+    "case_count": 20,
+    "kind": "redacted_real_full_activation_run",
+    "note": "Responses are preserved verbatim; compact skill-load booleans are derived from real session tool traces recorded by the run.",
+    "redactions": [
+      "absolute paths",
+      "profile name",
+      "session IDs",
+      "durations",
+      "raw tool trace identifiers"
+    ]
+  },
+  "schema_version": 1
+}

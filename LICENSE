@@ -1,0 +1,49 @@
+MIT License
+
+Copyright (c) 2026 am423
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---------------------------------------------------------------------------
+
+NOTICE — third-party tldraw material
+
+This license applies only to original skill content in this repository
+(Hermes skill markdown, authored references, test metadata, and helper
+scripts created for the skill).
+
+The tldraw SDK, its published packages, and upstream material derived from the
+official simple-server example are provided under the separate tldraw license
+(source-available), except where an included upstream file carries its own
+license. They are not MIT-licensed by virtue of this file. See:
+
+  https://tldraw.dev/community/license
+  https://tldraw.dev/legal/tldraw-license
+
+Applications generated while using this skill remain subject to the tldraw
+SDK license and may require a production license key.
+
+`integration/agent-eval/` includes code adapted from official tldraw starter
+projects that carry an MIT license and copyright notice for tldraw Inc. The
+upstream notice is preserved in `integration/agent-eval/LICENSE.md`. The
+workflow starter also preserves its upstream README attribution. Those MIT
+terms do not relicense the tldraw SDK dependency.
+
+The tldraw name and logo are trademarks of tldraw Inc.; no affiliation or
+endorsement is implied.

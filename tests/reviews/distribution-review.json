@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-07-18T21:01:10Z",
+  "profile": "tldrawdist",
+  "installation": "copied skill directory; not a working-tree symlink",
+  "checks": {
+    "discovery": true,
+    "skill_inspection": true,
+    "stdlib_helpers": true,
+    "explicit_oneshot": {
+      "ok": true,
+      "exit_code": 0,
+      "prompt": "Use /tldraw. Return exactly one sentence naming the ${HERMES_SKILL_DIR} reference file that covers importing and parsing a .tldr document.",
+      "response": "${HERMES_SKILL_DIR}/references/data-files-assets-export-mermaid.md covers importing and parsing a .tldr document.",
+      "api_calls": 2,
+      "input_tokens": 17753,
+      "output_tokens": 66
+    }
+  },
+  "limitations": [
+    "This verifies local copied distribution. A clean clone of the public remote is a separate release gate."
+  ]
+}

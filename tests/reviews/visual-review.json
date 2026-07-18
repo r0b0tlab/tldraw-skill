@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-07-18T20:43:57Z",
+  "reviewer": "Hermes vision QA",
+  "artifact": "eval-app/artifacts/eval-screenshot.png",
+  "result": "pass",
+  "checks": {
+    "content_unobscured": true,
+    "no_selection_or_detached_artifacts": true,
+    "no_clipping": true,
+    "panel_readable": true,
+    "canvas_composition_intentional": true,
+    "presentation_ready": true
+  },
+  "notes": [
+    "Default floating style panel was removed from this evidence app because the dedicated status panel already occupies the right edge.",
+    "Architecture and Mermaid diagrams are fully visible, unselected, and separated with clear hierarchy.",
+    "Light status panel has machine-measured 16.95:1 text contrast and 12px status text."
+  ]
+}

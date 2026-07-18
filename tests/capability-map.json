@@ -1,0 +1,1295 @@
+{
+  "version": 1,
+  "observed_date": "2026-07-17",
+  "observed_tldraw_npm_version": "5.2.5",
+  "index_url": "https://tldraw.dev/llms.txt",
+  "buckets": {
+    "core_editor": "Core editor, input, camera, history, events",
+    "store_data": "Store, signals, validation, side effects",
+    "shapes_ext": "Shapes, tools, bindings, geometry, styles",
+    "ui_a11y": "UI, a11y, i18n, themes, preferences",
+    "content_io": "Assets, persistence, .tldr, export, Mermaid, clipboard",
+    "automation": "Editor API automation and @tldraw/driver",
+    "collab": "Sync and collaboration",
+    "starters_ai": "AI integrations and starter kits",
+    "production": "Performance, security, license, deployment",
+    "upstream": "Migrations and upstream monorepo",
+    "routing": "Project routing and scaffolding",
+    "diagrams": "Diagram authoring quality",
+    "policy": "Source/version and anti-hallucination policy"
+  },
+  "inspect_implement_verify": {
+    "inspect": "Run inspect_project.py; read installed types and matching docs",
+    "implement": "Use only public APIs from routed reference; align package versions",
+    "verify": "typecheck/build; browser/Driver when available; label unverified gaps"
+  },
+  "entries": [
+    {
+      "id": "sdk-feature:accessibility",
+      "kind": "sdk-feature",
+      "slug": "accessibility",
+      "bucket": "ui_a11y",
+      "reference": "references/ui-accessibility-internationalization.md",
+      "path": "/sdk-features/accessibility",
+      "url": "https://tldraw.dev/sdk-features/accessibility",
+      "verification_bucket": "ui_a11y"
+    },
+    {
+      "id": "sdk-feature:actions",
+      "kind": "sdk-feature",
+      "slug": "actions",
+      "bucket": "ui_a11y",
+      "reference": "references/ui-accessibility-internationalization.md",
+      "path": "/sdk-features/actions",
+      "url": "https://tldraw.dev/sdk-features/actions",
+      "verification_bucket": "ui_a11y"
+    },
+    {
+      "id": "sdk-feature:animation",
+      "kind": "sdk-feature",
+      "slug": "animation",
+      "bucket": "core_editor",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/sdk-features/animation",
+      "url": "https://tldraw.dev/sdk-features/animation",
+      "verification_bucket": "core_editor"
+    },
+    {
+      "id": "sdk-feature:assets",
+      "kind": "sdk-feature",
+      "slug": "assets",
+      "bucket": "content_io",
+      "reference": "references/data-files-assets-export-mermaid.md",
+      "path": "/sdk-features/assets",
+      "url": "https://tldraw.dev/sdk-features/assets",
+      "verification_bucket": "content_io"
+    },
+    {
+      "id": "sdk-feature:attribution",
+      "kind": "sdk-feature",
+      "slug": "attribution",
+      "bucket": "production",
+      "reference": "references/performance-security-licensing-deployment.md",
+      "path": "/sdk-features/attribution",
+      "url": "https://tldraw.dev/sdk-features/attribution",
+      "verification_bucket": "production"
+    },
+    {
+      "id": "sdk-feature:bindings",
+      "kind": "sdk-feature",
+      "slug": "bindings",
+      "bucket": "shapes_ext",
+      "reference": "references/shapes-tools-bindings.md",
+      "path": "/sdk-features/bindings",
+      "url": "https://tldraw.dev/sdk-features/bindings",
+      "verification_bucket": "shapes_ext"
+    },
+    {
+      "id": "sdk-feature:camera",
+      "kind": "sdk-feature",
+      "slug": "camera",
+      "bucket": "core_editor",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/sdk-features/camera",
+      "url": "https://tldraw.dev/sdk-features/camera",
+      "verification_bucket": "core_editor"
+    },
+    {
+      "id": "sdk-feature:click-detection",
+      "kind": "sdk-feature",
+      "slug": "click-detection",
+      "bucket": "core_editor",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/sdk-features/click-detection",
+      "url": "https://tldraw.dev/sdk-features/click-detection",
+      "verification_bucket": "core_editor"
+    },
+    {
+      "id": "sdk-feature:clipboard",
+      "kind": "sdk-feature",
+      "slug": "clipboard",
+      "bucket": "content_io",
+      "reference": "references/data-files-assets-export-mermaid.md",
+      "path": "/sdk-features/clipboard",
+      "url": "https://tldraw.dev/sdk-features/clipboard",
+      "verification_bucket": "content_io"
+    },
+    {
+      "id": "sdk-feature:collaboration",
+      "kind": "sdk-feature",
+      "slug": "collaboration",
+      "bucket": "collab",
+      "reference": "references/sync-collaboration.md",
+      "path": "/sdk-features/collaboration",
+      "url": "https://tldraw.dev/sdk-features/collaboration",
+      "verification_bucket": "collab"
+    },
+    {
+      "id": "sdk-feature:coordinates",
+      "kind": "sdk-feature",
+      "slug": "coordinates",
+      "bucket": "core_editor",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/sdk-features/coordinates",
+      "url": "https://tldraw.dev/sdk-features/coordinates",
+      "verification_bucket": "core_editor"
+    },
+    {
+      "id": "sdk-feature:culling",
+      "kind": "sdk-feature",
+      "slug": "culling",
+      "bucket": "core_editor",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/sdk-features/culling",
+      "url": "https://tldraw.dev/sdk-features/culling",
+      "verification_bucket": "core_editor"
+    },
+    {
+      "id": "sdk-feature:cursor-chat",
+      "kind": "sdk-feature",
+      "slug": "cursor-chat",
+      "bucket": "collab",
+      "reference": "references/sync-collaboration.md",
+      "path": "/sdk-features/cursor-chat",
+      "url": "https://tldraw.dev/sdk-features/cursor-chat",
+      "verification_bucket": "collab"
+    },
+    {
+      "id": "sdk-feature:cursors",
+      "kind": "sdk-feature",
+      "slug": "cursors",
+      "bucket": "collab",
+      "reference": "references/sync-collaboration.md",
+      "path": "/sdk-features/cursors",
+      "url": "https://tldraw.dev/sdk-features/cursors",
+      "verification_bucket": "collab"
+    },
+    {
+      "id": "sdk-feature:deep-links",
+      "kind": "sdk-feature",
+      "slug": "deep-links",
+      "bucket": "content_io",
+      "reference": "references/data-files-assets-export-mermaid.md",
+      "path": "/sdk-features/deep-links",
+      "url": "https://tldraw.dev/sdk-features/deep-links",
+      "verification_bucket": "content_io"
+    },
+    {
+      "id": "sdk-feature:default-shapes",
+      "kind": "sdk-feature",
+      "slug": "default-shapes",
+      "bucket": "shapes_ext",
+      "reference": "references/shapes-tools-bindings.md",
+      "path": "/sdk-features/default-shapes",
+      "url": "https://tldraw.dev/sdk-features/default-shapes",
+      "verification_bucket": "shapes_ext"
+    },
+    {
+      "id": "sdk-feature:drag-and-drop",
+      "kind": "sdk-feature",
+      "slug": "drag-and-drop",
+      "bucket": "content_io",
+      "reference": "references/data-files-assets-export-mermaid.md",
+      "path": "/sdk-features/drag-and-drop",
+      "url": "https://tldraw.dev/sdk-features/drag-and-drop",
+      "verification_bucket": "content_io"
+    },
+    {
+      "id": "sdk-feature:draw-shape",
+      "kind": "sdk-feature",
+      "slug": "draw-shape",
+      "bucket": "shapes_ext",
+      "reference": "references/shapes-tools-bindings.md",
+      "path": "/sdk-features/draw-shape",
+      "url": "https://tldraw.dev/sdk-features/draw-shape",
+      "verification_bucket": "shapes_ext"
+    },
+    {
+      "id": "sdk-feature:edge-scrolling",
+      "kind": "sdk-feature",
+      "slug": "edge-scrolling",
+      "bucket": "core_editor",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/sdk-features/edge-scrolling",
+      "url": "https://tldraw.dev/sdk-features/edge-scrolling",
+      "verification_bucket": "core_editor"
+    },
+    {
+      "id": "sdk-feature:editor",
+      "kind": "sdk-feature",
+      "slug": "editor",
+      "bucket": "core_editor",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/sdk-features/editor",
+      "url": "https://tldraw.dev/sdk-features/editor",
+      "verification_bucket": "core_editor"
+    },
+    {
+      "id": "sdk-feature:embed-shape",
+      "kind": "sdk-feature",
+      "slug": "embed-shape",
+      "bucket": "shapes_ext",
+      "reference": "references/shapes-tools-bindings.md",
+      "path": "/sdk-features/embed-shape",
+      "url": "https://tldraw.dev/sdk-features/embed-shape",
+      "verification_bucket": "shapes_ext"
+    },
+    {
+      "id": "sdk-feature:environment",
+      "kind": "sdk-feature",
+      "slug": "environment",
+      "bucket": "ui_a11y",
+      "reference": "references/ui-accessibility-internationalization.md",
+      "path": "/sdk-features/environment",
+      "url": "https://tldraw.dev/sdk-features/environment",
+      "verification_bucket": "ui_a11y"
+    },
+    {
+      "id": "sdk-feature:errors",
+      "kind": "sdk-feature",
+      "slug": "errors",
+      "bucket": "production",
+      "reference": "references/performance-security-licensing-deployment.md",
+      "path": "/sdk-features/errors",
+      "url": "https://tldraw.dev/sdk-features/errors",
+      "verification_bucket": "production"
+    },
+    {
+      "id": "sdk-feature:events",
+      "kind": "sdk-feature",
+      "slug": "events",
+      "bucket": "core_editor",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/sdk-features/events",
+      "url": "https://tldraw.dev/sdk-features/events",
+      "verification_bucket": "core_editor"
+    },
+    {
+      "id": "sdk-feature:external-content",
+      "kind": "sdk-feature",
+      "slug": "external-content",
+      "bucket": "content_io",
+      "reference": "references/data-files-assets-export-mermaid.md",
+      "path": "/sdk-features/external-content",
+      "url": "https://tldraw.dev/sdk-features/external-content",
+      "verification_bucket": "content_io"
+    },
+    {
+      "id": "sdk-feature:focus",
+      "kind": "sdk-feature",
+      "slug": "focus",
+      "bucket": "ui_a11y",
+      "reference": "references/ui-accessibility-internationalization.md",
+      "path": "/sdk-features/focus",
+      "url": "https://tldraw.dev/sdk-features/focus",
+      "verification_bucket": "ui_a11y"
+    },
+    {
+      "id": "sdk-feature:frame-shape",
+      "kind": "sdk-feature",
+      "slug": "frame-shape",
+      "bucket": "shapes_ext",
+      "reference": "references/shapes-tools-bindings.md",
+      "path": "/sdk-features/frame-shape",
+      "url": "https://tldraw.dev/sdk-features/frame-shape",
+      "verification_bucket": "shapes_ext"
+    },
+    {
+      "id": "sdk-feature:geo-shape",
+      "kind": "sdk-feature",
+      "slug": "geo-shape",
+      "bucket": "shapes_ext",
+      "reference": "references/shapes-tools-bindings.md",
+      "path": "/sdk-features/geo-shape",
+      "url": "https://tldraw.dev/sdk-features/geo-shape",
+      "verification_bucket": "shapes_ext"
+    },
+    {
+      "id": "sdk-feature:geometry",
+      "kind": "sdk-feature",
+      "slug": "geometry",
+      "bucket": "shapes_ext",
+      "reference": "references/shapes-tools-bindings.md",
+      "path": "/sdk-features/geometry",
+      "url": "https://tldraw.dev/sdk-features/geometry",
+      "verification_bucket": "shapes_ext"
+    },
+    {
+      "id": "sdk-feature:groups",
+      "kind": "sdk-feature",
+      "slug": "groups",
+      "bucket": "shapes_ext",
+      "reference": "references/shapes-tools-bindings.md",
+      "path": "/sdk-features/groups",
+      "url": "https://tldraw.dev/sdk-features/groups",
+      "verification_bucket": "shapes_ext"
+    },
+    {
+      "id": "sdk-feature:handles",
+      "kind": "sdk-feature",
+      "slug": "handles",
+      "bucket": "shapes_ext",
+      "reference": "references/shapes-tools-bindings.md",
+      "path": "/sdk-features/handles",
+      "url": "https://tldraw.dev/sdk-features/handles",
+      "verification_bucket": "shapes_ext"
+    },
+    {
+      "id": "sdk-feature:highlighting",
+      "kind": "sdk-feature",
+      "slug": "highlighting",
+      "bucket": "core_editor",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/sdk-features/highlighting",
+      "url": "https://tldraw.dev/sdk-features/highlighting",
+      "verification_bucket": "core_editor"
+    },
+    {
+      "id": "sdk-feature:history",
+      "kind": "sdk-feature",
+      "slug": "history",
+      "bucket": "core_editor",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/sdk-features/history",
+      "url": "https://tldraw.dev/sdk-features/history",
+      "verification_bucket": "core_editor"
+    },
+    {
+      "id": "sdk-feature:image-export",
+      "kind": "sdk-feature",
+      "slug": "image-export",
+      "bucket": "content_io",
+      "reference": "references/data-files-assets-export-mermaid.md",
+      "path": "/sdk-features/image-export",
+      "url": "https://tldraw.dev/sdk-features/image-export",
+      "verification_bucket": "content_io"
+    },
+    {
+      "id": "sdk-feature:indicators",
+      "kind": "sdk-feature",
+      "slug": "indicators",
+      "bucket": "core_editor",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/sdk-features/indicators",
+      "url": "https://tldraw.dev/sdk-features/indicators",
+      "verification_bucket": "core_editor"
+    },
+    {
+      "id": "sdk-feature:input-handling",
+      "kind": "sdk-feature",
+      "slug": "input-handling",
+      "bucket": "core_editor",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/sdk-features/input-handling",
+      "url": "https://tldraw.dev/sdk-features/input-handling",
+      "verification_bucket": "core_editor"
+    },
+    {
+      "id": "sdk-feature:instance-state",
+      "kind": "sdk-feature",
+      "slug": "instance-state",
+      "bucket": "core_editor",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/sdk-features/instance-state",
+      "url": "https://tldraw.dev/sdk-features/instance-state",
+      "verification_bucket": "core_editor"
+    },
+    {
+      "id": "sdk-feature:internationalization",
+      "kind": "sdk-feature",
+      "slug": "internationalization",
+      "bucket": "ui_a11y",
+      "reference": "references/ui-accessibility-internationalization.md",
+      "path": "/sdk-features/internationalization",
+      "url": "https://tldraw.dev/sdk-features/internationalization",
+      "verification_bucket": "ui_a11y"
+    },
+    {
+      "id": "sdk-feature:license-key",
+      "kind": "sdk-feature",
+      "slug": "license-key",
+      "bucket": "production",
+      "reference": "references/performance-security-licensing-deployment.md",
+      "path": "/sdk-features/license-key",
+      "url": "https://tldraw.dev/sdk-features/license-key",
+      "verification_bucket": "production"
+    },
+    {
+      "id": "sdk-feature:locked-shapes",
+      "kind": "sdk-feature",
+      "slug": "locked-shapes",
+      "bucket": "shapes_ext",
+      "reference": "references/shapes-tools-bindings.md",
+      "path": "/sdk-features/locked-shapes",
+      "url": "https://tldraw.dev/sdk-features/locked-shapes",
+      "verification_bucket": "shapes_ext"
+    },
+    {
+      "id": "sdk-feature:note-shape",
+      "kind": "sdk-feature",
+      "slug": "note-shape",
+      "bucket": "shapes_ext",
+      "reference": "references/shapes-tools-bindings.md",
+      "path": "/sdk-features/note-shape",
+      "url": "https://tldraw.dev/sdk-features/note-shape",
+      "verification_bucket": "shapes_ext"
+    },
+    {
+      "id": "sdk-feature:options",
+      "kind": "sdk-feature",
+      "slug": "options",
+      "bucket": "core_editor",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/sdk-features/options",
+      "url": "https://tldraw.dev/sdk-features/options",
+      "verification_bucket": "core_editor"
+    },
+    {
+      "id": "sdk-feature:overlay-utils",
+      "kind": "sdk-feature",
+      "slug": "overlay-utils",
+      "bucket": "ui_a11y",
+      "reference": "references/ui-accessibility-internationalization.md",
+      "path": "/sdk-features/overlay-utils",
+      "url": "https://tldraw.dev/sdk-features/overlay-utils",
+      "verification_bucket": "ui_a11y"
+    },
+    {
+      "id": "sdk-feature:pages",
+      "kind": "sdk-feature",
+      "slug": "pages",
+      "bucket": "core_editor",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/sdk-features/pages",
+      "url": "https://tldraw.dev/sdk-features/pages",
+      "verification_bucket": "core_editor"
+    },
+    {
+      "id": "sdk-feature:parenting",
+      "kind": "sdk-feature",
+      "slug": "parenting",
+      "bucket": "shapes_ext",
+      "reference": "references/shapes-tools-bindings.md",
+      "path": "/sdk-features/parenting",
+      "url": "https://tldraw.dev/sdk-features/parenting",
+      "verification_bucket": "shapes_ext"
+    },
+    {
+      "id": "sdk-feature:performance",
+      "kind": "sdk-feature",
+      "slug": "performance",
+      "bucket": "production",
+      "reference": "references/performance-security-licensing-deployment.md",
+      "path": "/sdk-features/performance",
+      "url": "https://tldraw.dev/sdk-features/performance",
+      "verification_bucket": "production"
+    },
+    {
+      "id": "sdk-feature:persistence",
+      "kind": "sdk-feature",
+      "slug": "persistence",
+      "bucket": "content_io",
+      "reference": "references/data-files-assets-export-mermaid.md",
+      "path": "/sdk-features/persistence",
+      "url": "https://tldraw.dev/sdk-features/persistence",
+      "verification_bucket": "content_io"
+    },
+    {
+      "id": "sdk-feature:readonly",
+      "kind": "sdk-feature",
+      "slug": "readonly",
+      "bucket": "core_editor",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/sdk-features/readonly",
+      "url": "https://tldraw.dev/sdk-features/readonly",
+      "verification_bucket": "core_editor"
+    },
+    {
+      "id": "sdk-feature:rich-text",
+      "kind": "sdk-feature",
+      "slug": "rich-text",
+      "bucket": "shapes_ext",
+      "reference": "references/shapes-tools-bindings.md",
+      "path": "/sdk-features/rich-text",
+      "url": "https://tldraw.dev/sdk-features/rich-text",
+      "verification_bucket": "shapes_ext"
+    },
+    {
+      "id": "sdk-feature:scribble",
+      "kind": "sdk-feature",
+      "slug": "scribble",
+      "bucket": "core_editor",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/sdk-features/scribble",
+      "url": "https://tldraw.dev/sdk-features/scribble",
+      "verification_bucket": "core_editor"
+    },
+    {
+      "id": "sdk-feature:selection",
+      "kind": "sdk-feature",
+      "slug": "selection",
+      "bucket": "core_editor",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/sdk-features/selection",
+      "url": "https://tldraw.dev/sdk-features/selection",
+      "verification_bucket": "core_editor"
+    },
+    {
+      "id": "sdk-feature:shape-clipping",
+      "kind": "sdk-feature",
+      "slug": "shape-clipping",
+      "bucket": "shapes_ext",
+      "reference": "references/shapes-tools-bindings.md",
+      "path": "/sdk-features/shape-clipping",
+      "url": "https://tldraw.dev/sdk-features/shape-clipping",
+      "verification_bucket": "shapes_ext"
+    },
+    {
+      "id": "sdk-feature:shape-indexing",
+      "kind": "sdk-feature",
+      "slug": "shape-indexing",
+      "bucket": "shapes_ext",
+      "reference": "references/shapes-tools-bindings.md",
+      "path": "/sdk-features/shape-indexing",
+      "url": "https://tldraw.dev/sdk-features/shape-indexing",
+      "verification_bucket": "shapes_ext"
+    },
+    {
+      "id": "sdk-feature:shape-transforms",
+      "kind": "sdk-feature",
+      "slug": "shape-transforms",
+      "bucket": "core_editor",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/sdk-features/shape-transforms",
+      "url": "https://tldraw.dev/sdk-features/shape-transforms",
+      "verification_bucket": "core_editor"
+    },
+    {
+      "id": "sdk-feature:shapes",
+      "kind": "sdk-feature",
+      "slug": "shapes",
+      "bucket": "shapes_ext",
+      "reference": "references/shapes-tools-bindings.md",
+      "path": "/sdk-features/shapes",
+      "url": "https://tldraw.dev/sdk-features/shapes",
+      "verification_bucket": "shapes_ext"
+    },
+    {
+      "id": "sdk-feature:side-effects",
+      "kind": "sdk-feature",
+      "slug": "side-effects",
+      "bucket": "store_data",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/sdk-features/side-effects",
+      "url": "https://tldraw.dev/sdk-features/side-effects",
+      "verification_bucket": "store_data"
+    },
+    {
+      "id": "sdk-feature:signals",
+      "kind": "sdk-feature",
+      "slug": "signals",
+      "bucket": "store_data",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/sdk-features/signals",
+      "url": "https://tldraw.dev/sdk-features/signals",
+      "verification_bucket": "store_data"
+    },
+    {
+      "id": "sdk-feature:snapping",
+      "kind": "sdk-feature",
+      "slug": "snapping",
+      "bucket": "core_editor",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/sdk-features/snapping",
+      "url": "https://tldraw.dev/sdk-features/snapping",
+      "verification_bucket": "core_editor"
+    },
+    {
+      "id": "sdk-feature:store",
+      "kind": "sdk-feature",
+      "slug": "store",
+      "bucket": "store_data",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/sdk-features/store",
+      "url": "https://tldraw.dev/sdk-features/store",
+      "verification_bucket": "store_data"
+    },
+    {
+      "id": "sdk-feature:styles",
+      "kind": "sdk-feature",
+      "slug": "styles",
+      "bucket": "shapes_ext",
+      "reference": "references/shapes-tools-bindings.md",
+      "path": "/sdk-features/styles",
+      "url": "https://tldraw.dev/sdk-features/styles",
+      "verification_bucket": "shapes_ext"
+    },
+    {
+      "id": "sdk-feature:text-measurement",
+      "kind": "sdk-feature",
+      "slug": "text-measurement",
+      "bucket": "shapes_ext",
+      "reference": "references/shapes-tools-bindings.md",
+      "path": "/sdk-features/text-measurement",
+      "url": "https://tldraw.dev/sdk-features/text-measurement",
+      "verification_bucket": "shapes_ext"
+    },
+    {
+      "id": "sdk-feature:text-shape",
+      "kind": "sdk-feature",
+      "slug": "text-shape",
+      "bucket": "shapes_ext",
+      "reference": "references/shapes-tools-bindings.md",
+      "path": "/sdk-features/text-shape",
+      "url": "https://tldraw.dev/sdk-features/text-shape",
+      "verification_bucket": "shapes_ext"
+    },
+    {
+      "id": "sdk-feature:themes",
+      "kind": "sdk-feature",
+      "slug": "themes",
+      "bucket": "ui_a11y",
+      "reference": "references/ui-accessibility-internationalization.md",
+      "path": "/sdk-features/themes",
+      "url": "https://tldraw.dev/sdk-features/themes",
+      "verification_bucket": "ui_a11y"
+    },
+    {
+      "id": "sdk-feature:ticks",
+      "kind": "sdk-feature",
+      "slug": "ticks",
+      "bucket": "core_editor",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/sdk-features/ticks",
+      "url": "https://tldraw.dev/sdk-features/ticks",
+      "verification_bucket": "core_editor"
+    },
+    {
+      "id": "sdk-feature:tools",
+      "kind": "sdk-feature",
+      "slug": "tools",
+      "bucket": "shapes_ext",
+      "reference": "references/shapes-tools-bindings.md",
+      "path": "/sdk-features/tools",
+      "url": "https://tldraw.dev/sdk-features/tools",
+      "verification_bucket": "shapes_ext"
+    },
+    {
+      "id": "sdk-feature:ui-components",
+      "kind": "sdk-feature",
+      "slug": "ui-components",
+      "bucket": "ui_a11y",
+      "reference": "references/ui-accessibility-internationalization.md",
+      "path": "/sdk-features/ui-components",
+      "url": "https://tldraw.dev/sdk-features/ui-components",
+      "verification_bucket": "ui_a11y"
+    },
+    {
+      "id": "sdk-feature:ui-primitives",
+      "kind": "sdk-feature",
+      "slug": "ui-primitives",
+      "bucket": "ui_a11y",
+      "reference": "references/ui-accessibility-internationalization.md",
+      "path": "/sdk-features/ui-primitives",
+      "url": "https://tldraw.dev/sdk-features/ui-primitives",
+      "verification_bucket": "ui_a11y"
+    },
+    {
+      "id": "sdk-feature:user-following",
+      "kind": "sdk-feature",
+      "slug": "user-following",
+      "bucket": "collab",
+      "reference": "references/sync-collaboration.md",
+      "path": "/sdk-features/user-following",
+      "url": "https://tldraw.dev/sdk-features/user-following",
+      "verification_bucket": "collab"
+    },
+    {
+      "id": "sdk-feature:user-preferences",
+      "kind": "sdk-feature",
+      "slug": "user-preferences",
+      "bucket": "ui_a11y",
+      "reference": "references/ui-accessibility-internationalization.md",
+      "path": "/sdk-features/user-preferences",
+      "url": "https://tldraw.dev/sdk-features/user-preferences",
+      "verification_bucket": "ui_a11y"
+    },
+    {
+      "id": "sdk-feature:validation",
+      "kind": "sdk-feature",
+      "slug": "validation",
+      "bucket": "store_data",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/sdk-features/validation",
+      "url": "https://tldraw.dev/sdk-features/validation",
+      "verification_bucket": "store_data"
+    },
+    {
+      "id": "sdk-feature:visibility",
+      "kind": "sdk-feature",
+      "slug": "visibility",
+      "bucket": "core_editor",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/sdk-features/visibility",
+      "url": "https://tldraw.dev/sdk-features/visibility",
+      "verification_bucket": "core_editor"
+    },
+    {
+      "id": "docs:ai",
+      "kind": "docs",
+      "slug": "ai",
+      "bucket": "starters_ai",
+      "reference": "references/ai-and-starter-kits.md",
+      "path": "/docs/ai",
+      "url": "https://tldraw.dev/docs/ai",
+      "verification_bucket": "starters_ai"
+    },
+    {
+      "id": "docs:assets",
+      "kind": "docs",
+      "slug": "assets",
+      "bucket": "content_io",
+      "reference": "references/data-files-assets-export-mermaid.md",
+      "path": "/docs/assets",
+      "url": "https://tldraw.dev/docs/assets",
+      "verification_bucket": "content_io"
+    },
+    {
+      "id": "docs:collaboration",
+      "kind": "docs",
+      "slug": "collaboration",
+      "bucket": "collab",
+      "reference": "references/sync-collaboration.md",
+      "path": "/docs/collaboration",
+      "url": "https://tldraw.dev/docs/collaboration",
+      "verification_bucket": "collab"
+    },
+    {
+      "id": "docs:driver",
+      "kind": "docs",
+      "slug": "driver",
+      "bucket": "automation",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/docs/driver",
+      "url": "https://tldraw.dev/docs/driver",
+      "verification_bucket": "automation"
+    },
+    {
+      "id": "docs:editor",
+      "kind": "docs",
+      "slug": "editor",
+      "bucket": "core_editor",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/docs/editor",
+      "url": "https://tldraw.dev/docs/editor",
+      "verification_bucket": "core_editor"
+    },
+    {
+      "id": "docs:handles",
+      "kind": "docs",
+      "slug": "handles",
+      "bucket": "shapes_ext",
+      "reference": "references/shapes-tools-bindings.md",
+      "path": "/docs/handles",
+      "url": "https://tldraw.dev/docs/handles",
+      "verification_bucket": "shapes_ext"
+    },
+    {
+      "id": "docs:indicators",
+      "kind": "docs",
+      "slug": "indicators",
+      "bucket": "core_editor",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/docs/indicators",
+      "url": "https://tldraw.dev/docs/indicators",
+      "verification_bucket": "core_editor"
+    },
+    {
+      "id": "docs:llm-docs",
+      "kind": "docs",
+      "slug": "llm-docs",
+      "bucket": "policy",
+      "reference": "references/source-and-version-policy.md",
+      "path": "/docs/llm-docs",
+      "url": "https://tldraw.dev/docs/llm-docs",
+      "verification_bucket": "policy"
+    },
+    {
+      "id": "docs:mermaid",
+      "kind": "docs",
+      "slug": "mermaid",
+      "bucket": "content_io",
+      "reference": "references/data-files-assets-export-mermaid.md",
+      "path": "/docs/mermaid",
+      "url": "https://tldraw.dev/docs/mermaid",
+      "verification_bucket": "content_io"
+    },
+    {
+      "id": "docs:persistence",
+      "kind": "docs",
+      "slug": "persistence",
+      "bucket": "content_io",
+      "reference": "references/data-files-assets-export-mermaid.md",
+      "path": "/docs/persistence",
+      "url": "https://tldraw.dev/docs/persistence",
+      "verification_bucket": "content_io"
+    },
+    {
+      "id": "docs:shapes",
+      "kind": "docs",
+      "slug": "shapes",
+      "bucket": "shapes_ext",
+      "reference": "references/shapes-tools-bindings.md",
+      "path": "/docs/shapes",
+      "url": "https://tldraw.dev/docs/shapes",
+      "verification_bucket": "shapes_ext"
+    },
+    {
+      "id": "docs:sync",
+      "kind": "docs",
+      "slug": "sync",
+      "bucket": "collab",
+      "reference": "references/sync-collaboration.md",
+      "path": "/docs/sync",
+      "url": "https://tldraw.dev/docs/sync",
+      "verification_bucket": "collab"
+    },
+    {
+      "id": "docs:tools",
+      "kind": "docs",
+      "slug": "tools",
+      "bucket": "shapes_ext",
+      "reference": "references/shapes-tools-bindings.md",
+      "path": "/docs/tools",
+      "url": "https://tldraw.dev/docs/tools",
+      "verification_bucket": "shapes_ext"
+    },
+    {
+      "id": "docs:user-interface",
+      "kind": "docs",
+      "slug": "user-interface",
+      "bucket": "ui_a11y",
+      "reference": "references/ui-accessibility-internationalization.md",
+      "path": "/docs/user-interface",
+      "url": "https://tldraw.dev/docs/user-interface",
+      "verification_bucket": "ui_a11y"
+    },
+    {
+      "id": "starter-kit:agent",
+      "kind": "starter-kit",
+      "slug": "agent",
+      "bucket": "starters_ai",
+      "reference": "references/ai-and-starter-kits.md",
+      "path": "/starter-kits/agent",
+      "url": "https://tldraw.dev/starter-kits/agent",
+      "verification_bucket": "starters_ai"
+    },
+    {
+      "id": "starter-kit:branching-chat",
+      "kind": "starter-kit",
+      "slug": "branching-chat",
+      "bucket": "starters_ai",
+      "reference": "references/ai-and-starter-kits.md",
+      "path": "/starter-kits/branching-chat",
+      "url": "https://tldraw.dev/starter-kits/branching-chat",
+      "verification_bucket": "starters_ai"
+    },
+    {
+      "id": "starter-kit:chat",
+      "kind": "starter-kit",
+      "slug": "chat",
+      "bucket": "starters_ai",
+      "reference": "references/ai-and-starter-kits.md",
+      "path": "/starter-kits/chat",
+      "url": "https://tldraw.dev/starter-kits/chat",
+      "verification_bucket": "starters_ai"
+    },
+    {
+      "id": "starter-kit:image-pipeline",
+      "kind": "starter-kit",
+      "slug": "image-pipeline",
+      "bucket": "starters_ai",
+      "reference": "references/ai-and-starter-kits.md",
+      "path": "/starter-kits/image-pipeline",
+      "url": "https://tldraw.dev/starter-kits/image-pipeline",
+      "verification_bucket": "starters_ai"
+    },
+    {
+      "id": "starter-kit:multiplayer",
+      "kind": "starter-kit",
+      "slug": "multiplayer",
+      "bucket": "collab",
+      "reference": "references/sync-collaboration.md",
+      "path": "/starter-kits/multiplayer",
+      "url": "https://tldraw.dev/starter-kits/multiplayer",
+      "verification_bucket": "collab"
+    },
+    {
+      "id": "starter-kit:overview",
+      "kind": "starter-kit",
+      "slug": "overview",
+      "bucket": "starters_ai",
+      "reference": "references/ai-and-starter-kits.md",
+      "path": "/starter-kits/overview",
+      "url": "https://tldraw.dev/starter-kits/overview",
+      "verification_bucket": "starters_ai"
+    },
+    {
+      "id": "starter-kit:shader",
+      "kind": "starter-kit",
+      "slug": "shader",
+      "bucket": "starters_ai",
+      "reference": "references/ai-and-starter-kits.md",
+      "path": "/starter-kits/shader",
+      "url": "https://tldraw.dev/starter-kits/shader",
+      "verification_bucket": "starters_ai"
+    },
+    {
+      "id": "starter-kit:workflow",
+      "kind": "starter-kit",
+      "slug": "workflow",
+      "bucket": "starters_ai",
+      "reference": "references/ai-and-starter-kits.md",
+      "path": "/starter-kits/workflow",
+      "url": "https://tldraw.dev/starter-kits/workflow",
+      "verification_bucket": "starters_ai"
+    },
+    {
+      "id": "reference-family:reference/editor",
+      "kind": "reference-family",
+      "slug": "reference/editor",
+      "bucket": "core_editor",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/reference/editor",
+      "url": "https://tldraw.dev/reference/editor",
+      "verification_bucket": "core_editor",
+      "notes": "Maps entire public reference namespace family"
+    },
+    {
+      "id": "reference-family:reference/store",
+      "kind": "reference-family",
+      "slug": "reference/store",
+      "bucket": "store_data",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/reference/store",
+      "url": "https://tldraw.dev/reference/store",
+      "verification_bucket": "store_data",
+      "notes": "Maps entire public reference namespace family"
+    },
+    {
+      "id": "reference-family:reference/state",
+      "kind": "reference-family",
+      "slug": "reference/state",
+      "bucket": "store_data",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/reference/state",
+      "url": "https://tldraw.dev/reference/state",
+      "verification_bucket": "store_data",
+      "notes": "Maps entire public reference namespace family"
+    },
+    {
+      "id": "reference-family:reference/state-react",
+      "kind": "reference-family",
+      "slug": "reference/state-react",
+      "bucket": "store_data",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/reference/state-react",
+      "url": "https://tldraw.dev/reference/state-react",
+      "verification_bucket": "store_data",
+      "notes": "Maps entire public reference namespace family"
+    },
+    {
+      "id": "reference-family:reference/tlschema",
+      "kind": "reference-family",
+      "slug": "reference/tlschema",
+      "bucket": "shapes_ext",
+      "reference": "references/shapes-tools-bindings.md",
+      "path": "/reference/tlschema",
+      "url": "https://tldraw.dev/reference/tlschema",
+      "verification_bucket": "shapes_ext",
+      "notes": "Maps entire public reference namespace family"
+    },
+    {
+      "id": "reference-family:reference/tldraw",
+      "kind": "reference-family",
+      "slug": "reference/tldraw",
+      "bucket": "routing",
+      "reference": "references/project-routing-and-starters.md",
+      "path": "/reference/tldraw",
+      "url": "https://tldraw.dev/reference/tldraw",
+      "verification_bucket": "routing",
+      "notes": "Maps entire public reference namespace family"
+    },
+    {
+      "id": "reference-family:reference/sync",
+      "kind": "reference-family",
+      "slug": "reference/sync",
+      "bucket": "collab",
+      "reference": "references/sync-collaboration.md",
+      "path": "/reference/sync",
+      "url": "https://tldraw.dev/reference/sync",
+      "verification_bucket": "collab",
+      "notes": "Maps entire public reference namespace family"
+    },
+    {
+      "id": "reference-family:reference/sync-core",
+      "kind": "reference-family",
+      "slug": "reference/sync-core",
+      "bucket": "collab",
+      "reference": "references/sync-collaboration.md",
+      "path": "/reference/sync-core",
+      "url": "https://tldraw.dev/reference/sync-core",
+      "verification_bucket": "collab",
+      "notes": "Maps entire public reference namespace family"
+    },
+    {
+      "id": "reference-family:reference/driver",
+      "kind": "reference-family",
+      "slug": "reference/driver",
+      "bucket": "automation",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/reference/driver",
+      "url": "https://tldraw.dev/reference/driver",
+      "verification_bucket": "automation",
+      "notes": "Maps entire public reference namespace family"
+    },
+    {
+      "id": "reference-family:reference/mermaid",
+      "kind": "reference-family",
+      "slug": "reference/mermaid",
+      "bucket": "content_io",
+      "reference": "references/data-files-assets-export-mermaid.md",
+      "path": "/reference/mermaid",
+      "url": "https://tldraw.dev/reference/mermaid",
+      "verification_bucket": "content_io",
+      "notes": "Maps entire public reference namespace family"
+    },
+    {
+      "id": "reference-family:reference/validate",
+      "kind": "reference-family",
+      "slug": "reference/validate",
+      "bucket": "store_data",
+      "reference": "references/editor-store-state-driver.md",
+      "path": "/reference/validate",
+      "url": "https://tldraw.dev/reference/validate",
+      "verification_bucket": "store_data",
+      "notes": "Maps entire public reference namespace family"
+    },
+    {
+      "id": "package:tldraw",
+      "kind": "package",
+      "slug": "tldraw",
+      "bucket": "routing",
+      "reference": "references/project-routing-and-starters.md",
+      "verification_bucket": "routing",
+      "notes": "Main React SDK package"
+    },
+    {
+      "id": "package:@tldraw/editor",
+      "kind": "package",
+      "slug": "@tldraw/editor",
+      "bucket": "core_editor",
+      "reference": "references/editor-store-state-driver.md",
+      "verification_bucket": "core_editor",
+      "notes": "Core editor"
+    },
+    {
+      "id": "package:@tldraw/store",
+      "kind": "package",
+      "slug": "@tldraw/store",
+      "bucket": "store_data",
+      "reference": "references/editor-store-state-driver.md",
+      "verification_bucket": "store_data",
+      "notes": "Reactive store"
+    },
+    {
+      "id": "package:@tldraw/tlschema",
+      "kind": "package",
+      "slug": "@tldraw/tlschema",
+      "bucket": "shapes_ext",
+      "reference": "references/shapes-tools-bindings.md",
+      "verification_bucket": "shapes_ext",
+      "notes": "Schema/validators"
+    },
+    {
+      "id": "package:@tldraw/state",
+      "kind": "package",
+      "slug": "@tldraw/state",
+      "bucket": "store_data",
+      "reference": "references/editor-store-state-driver.md",
+      "verification_bucket": "store_data",
+      "notes": "Signals"
+    },
+    {
+      "id": "package:@tldraw/state-react",
+      "kind": "package",
+      "slug": "@tldraw/state-react",
+      "bucket": "store_data",
+      "reference": "references/editor-store-state-driver.md",
+      "verification_bucket": "store_data",
+      "notes": "React signals"
+    },
+    {
+      "id": "package:@tldraw/sync",
+      "kind": "package",
+      "slug": "@tldraw/sync",
+      "bucket": "collab",
+      "reference": "references/sync-collaboration.md",
+      "verification_bucket": "collab",
+      "notes": "Client sync"
+    },
+    {
+      "id": "package:@tldraw/sync-core",
+      "kind": "package",
+      "slug": "@tldraw/sync-core",
+      "bucket": "collab",
+      "reference": "references/sync-collaboration.md",
+      "verification_bucket": "collab",
+      "notes": "Server room"
+    },
+    {
+      "id": "package:@tldraw/driver",
+      "kind": "package",
+      "slug": "@tldraw/driver",
+      "bucket": "automation",
+      "reference": "references/editor-store-state-driver.md",
+      "verification_bucket": "automation",
+      "notes": "Driver API"
+    },
+    {
+      "id": "package:@tldraw/mermaid",
+      "kind": "package",
+      "slug": "@tldraw/mermaid",
+      "bucket": "content_io",
+      "reference": "references/data-files-assets-export-mermaid.md",
+      "verification_bucket": "content_io",
+      "notes": "Mermaid"
+    },
+    {
+      "id": "package:@tldraw/utils",
+      "kind": "package",
+      "slug": "@tldraw/utils",
+      "bucket": "core_editor",
+      "reference": "references/editor-store-state-driver.md",
+      "verification_bucket": "core_editor",
+      "notes": "Utils"
+    },
+    {
+      "id": "package:@tldraw/validate",
+      "kind": "package",
+      "slug": "@tldraw/validate",
+      "bucket": "store_data",
+      "reference": "references/editor-store-state-driver.md",
+      "verification_bucket": "store_data",
+      "notes": "Validators"
+    },
+    {
+      "id": "package:@tldraw/assets",
+      "kind": "package",
+      "slug": "@tldraw/assets",
+      "bucket": "content_io",
+      "reference": "references/data-files-assets-export-mermaid.md",
+      "verification_bucket": "content_io",
+      "notes": "Assets bundle"
+    },
+    {
+      "id": "package:create-tldraw",
+      "kind": "package",
+      "slug": "create-tldraw",
+      "bucket": "routing",
+      "reference": "references/project-routing-and-starters.md",
+      "verification_bucket": "routing",
+      "notes": "CLI scaffolder"
+    },
+    {
+      "id": "community:license",
+      "kind": "community",
+      "slug": "license",
+      "bucket": "production",
+      "reference": "references/performance-security-licensing-deployment.md",
+      "path": "/community/license",
+      "url": "https://tldraw.dev/community/license",
+      "verification_bucket": "production"
+    },
+    {
+      "id": "blog:anti-hallucination",
+      "kind": "blog",
+      "slug": "anti-hallucination",
+      "bucket": "policy",
+      "reference": "references/source-and-version-policy.md",
+      "path": "/blog/20-things-i-wish-ai-chatbots-knew-about-tldraw",
+      "url": "https://tldraw.dev/blog/20-things-i-wish-ai-chatbots-knew-about-tldraw",
+      "verification_bucket": "policy"
+    },
+    {
+      "id": "releases:migration-skill",
+      "kind": "releases",
+      "slug": "migration-skill",
+      "bucket": "upstream",
+      "reference": "references/testing-debugging-migrations-upstream.md",
+      "path": "/releases/migration-skill",
+      "url": "https://tldraw.dev/releases/migration-skill",
+      "verification_bucket": "upstream"
+    },
+    {
+      "id": "workflow:diagram-authoring",
+      "kind": "workflow",
+      "slug": "diagram-authoring",
+      "bucket": "diagrams",
+      "reference": "references/diagram-authoring.md",
+      "verification_bucket": "diagrams"
+    },
+    {
+      "id": "workflow:source-policy",
+      "kind": "workflow",
+      "slug": "source-policy",
+      "bucket": "policy",
+      "reference": "references/source-and-version-policy.md",
+      "verification_bucket": "policy"
+    },
+    {
+      "id": "workflow:project-routing",
+      "kind": "workflow",
+      "slug": "project-routing",
+      "bucket": "routing",
+      "reference": "references/project-routing-and-starters.md",
+      "verification_bucket": "routing"
+    },
+    {
+      "id": "workflow:migrations-upstream",
+      "kind": "workflow",
+      "slug": "migrations-upstream",
+      "bucket": "upstream",
+      "reference": "references/testing-debugging-migrations-upstream.md",
+      "verification_bucket": "upstream"
+    }
+  ],
+  "exclusions": [
+    {
+      "id": "packages/dotcom-shared",
+      "path": "packages/dotcom-shared",
+      "reason": "Internal shared code for tldraw.com apps, not a public application SDK surface",
+      "source": "https://github.com/tldraw/tldraw/tree/main/packages/dotcom-shared"
+    },
+    {
+      "id": "packages/worker-shared",
+      "path": "packages/worker-shared",
+      "reason": "Internal worker helpers for tldraw.com, not a public application package",
+      "source": "https://github.com/tldraw/tldraw/tree/main/packages/worker-shared"
+    },
+    {
+      "id": "packages/namespaced-tldraw",
+      "path": "packages/namespaced-tldraw",
+      "reason": "Build/namespacing infrastructure; not a primary app-facing install target (use tldraw)",
+      "source": "https://github.com/tldraw/tldraw/tree/main/packages/namespaced-tldraw"
+    }
+  ],
+  "counts": {
+    "sdk_features": 71,
+    "docs": 14,
+    "starter_kits": 8,
+    "packages": 14,
+    "reference_families": 11,
+    "entries_total": 125
+  }
+}

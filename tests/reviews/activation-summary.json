@@ -1,0 +1,515 @@
+{
+  "schema_version": 2,
+  "generated_at": "2026-07-18T21:49:51Z",
+  "profile": "tldraweval",
+  "source_command": "python3 tests/run_activation_eval.py --profile tldraweval --timeout 240",
+  "evaluation_mode": "deterministic_rescore_of_real_full_run",
+  "source_artifact": "tests/results/activation/activation-eval.json",
+  "reproducible_fixture": "tests/fixtures/activation-real-responses-redacted.json",
+  "reproduction_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest -v tests.test_activation_eval.RedactedRealRunFixtureTests",
+  "total": 20,
+  "passed": 20,
+  "failed": 0,
+  "ok": true,
+  "route_policy_review": {
+    "status": "findings_remediated",
+    "scope": "blind independent audit of all 20 route contracts; generated activation outputs were excluded from reviewer scope",
+    "changes": "Removed gratuitous required routes and allowed only semantically justified progressive-disclosure second hops."
+  },
+  "limitations": [
+    "This is a deterministic rescore of real full-run responses and session skill_view traces after route-policy corrections; the model prompts and assertion keys were unchanged because expected/allowed route sets are never disclosed to the evaluated model.",
+    "Reference file_path loads remain informational; pass/fail uses routed filenames and real skill_view(tldraw) session trace proof.",
+    "The committed redacted fixture preserves every model response and compact booleans derived from the original session tool traces; session IDs, profile names, machine paths, timings, and raw trace identifiers are intentionally omitted."
+  ],
+  "results": [
+    {
+      "id": "pos-tldr-flowchart",
+      "type": "positive",
+      "passed": true,
+      "actual_activation": true,
+      "expected_routes": [
+        "data-files-assets-export-mermaid.md",
+        "diagram-authoring.md"
+      ],
+      "allowed_extra_routes": [
+        "project-routing-and-starters.md",
+        "shapes-tools-bindings.md"
+      ],
+      "actual_routes": [
+        "data-files-assets-export-mermaid.md",
+        "diagram-authoring.md",
+        "shapes-tools-bindings.md"
+      ],
+      "max_routes": 4,
+      "checks": {
+        "activation": true,
+        "routes": true,
+        "route_count": true,
+        "version_inspection": true,
+        "assertion_evidence": true,
+        "skill_load": true
+      },
+      "skill_load_proof": "session_tool_trace"
+    },
+    {
+      "id": "pos-add-to-react-app",
+      "type": "positive",
+      "passed": true,
+      "actual_activation": true,
+      "expected_routes": [
+        "project-routing-and-starters.md"
+      ],
+      "allowed_extra_routes": [],
+      "actual_routes": [
+        "project-routing-and-starters.md"
+      ],
+      "max_routes": 1,
+      "checks": {
+        "activation": true,
+        "routes": true,
+        "route_count": true,
+        "version_inspection": true,
+        "assertion_evidence": true,
+        "skill_load": true
+      },
+      "skill_load_proof": "session_tool_trace"
+    },
+    {
+      "id": "pos-driver-automate",
+      "type": "positive",
+      "passed": true,
+      "actual_activation": true,
+      "expected_routes": [
+        "editor-store-state-driver.md"
+      ],
+      "allowed_extra_routes": [],
+      "actual_routes": [
+        "editor-store-state-driver.md"
+      ],
+      "max_routes": 1,
+      "checks": {
+        "activation": true,
+        "routes": true,
+        "route_count": true,
+        "version_inspection": true,
+        "assertion_evidence": true,
+        "skill_load": true
+      },
+      "skill_load_proof": "session_tool_trace"
+    },
+    {
+      "id": "pos-custom-shape-tool-binding",
+      "type": "positive",
+      "passed": true,
+      "actual_activation": true,
+      "expected_routes": [
+        "shapes-tools-bindings.md"
+      ],
+      "allowed_extra_routes": [
+        "ui-accessibility-internationalization.md"
+      ],
+      "actual_routes": [
+        "shapes-tools-bindings.md"
+      ],
+      "max_routes": 2,
+      "checks": {
+        "activation": true,
+        "routes": true,
+        "route_count": true,
+        "version_inspection": true,
+        "assertion_evidence": true,
+        "skill_load": true
+      },
+      "skill_load_proof": "session_tool_trace"
+    },
+    {
+      "id": "pos-export-svg-png",
+      "type": "positive",
+      "passed": true,
+      "actual_activation": true,
+      "expected_routes": [
+        "data-files-assets-export-mermaid.md"
+      ],
+      "allowed_extra_routes": [
+        "source-and-version-policy.md"
+      ],
+      "actual_routes": [
+        "data-files-assets-export-mermaid.md"
+      ],
+      "max_routes": 2,
+      "checks": {
+        "activation": true,
+        "routes": true,
+        "route_count": true,
+        "version_inspection": true,
+        "assertion_evidence": true,
+        "skill_load": true
+      },
+      "skill_load_proof": "session_tool_trace"
+    },
+    {
+      "id": "pos-persist-assets-snapshots",
+      "type": "positive",
+      "passed": true,
+      "actual_activation": true,
+      "expected_routes": [
+        "data-files-assets-export-mermaid.md"
+      ],
+      "allowed_extra_routes": [],
+      "actual_routes": [
+        "data-files-assets-export-mermaid.md"
+      ],
+      "max_routes": 1,
+      "checks": {
+        "activation": true,
+        "routes": true,
+        "route_count": true,
+        "version_inspection": true,
+        "assertion_evidence": true,
+        "skill_load": true
+      },
+      "skill_load_proof": "session_tool_trace"
+    },
+    {
+      "id": "pos-multiplayer-sync",
+      "type": "positive",
+      "passed": true,
+      "actual_activation": true,
+      "expected_routes": [
+        "sync-collaboration.md"
+      ],
+      "allowed_extra_routes": [
+        "source-and-version-policy.md"
+      ],
+      "actual_routes": [
+        "sync-collaboration.md"
+      ],
+      "max_routes": 2,
+      "checks": {
+        "activation": true,
+        "routes": true,
+        "route_count": true,
+        "version_inspection": true,
+        "assertion_evidence": true,
+        "skill_load": true
+      },
+      "skill_load_proof": "session_tool_trace"
+    },
+    {
+      "id": "pos-agent-starter",
+      "type": "positive",
+      "passed": true,
+      "actual_activation": true,
+      "expected_routes": [
+        "ai-and-starter-kits.md"
+      ],
+      "allowed_extra_routes": [
+        "project-routing-and-starters.md"
+      ],
+      "actual_routes": [
+        "ai-and-starter-kits.md"
+      ],
+      "max_routes": 2,
+      "checks": {
+        "activation": true,
+        "routes": true,
+        "route_count": true,
+        "version_inspection": true,
+        "assertion_evidence": true,
+        "skill_load": true
+      },
+      "skill_load_proof": "session_tool_trace"
+    },
+    {
+      "id": "pos-mermaid",
+      "type": "positive",
+      "passed": true,
+      "actual_activation": true,
+      "expected_routes": [
+        "data-files-assets-export-mermaid.md",
+        "diagram-authoring.md"
+      ],
+      "allowed_extra_routes": [
+        "source-and-version-policy.md"
+      ],
+      "actual_routes": [
+        "data-files-assets-export-mermaid.md",
+        "diagram-authoring.md"
+      ],
+      "max_routes": 3,
+      "checks": {
+        "activation": true,
+        "routes": true,
+        "route_count": true,
+        "version_inspection": true,
+        "assertion_evidence": true,
+        "skill_load": true
+      },
+      "skill_load_proof": "session_tool_trace"
+    },
+    {
+      "id": "pos-migrate",
+      "type": "positive",
+      "passed": true,
+      "actual_activation": true,
+      "expected_routes": [
+        "source-and-version-policy.md",
+        "testing-debugging-migrations-upstream.md"
+      ],
+      "allowed_extra_routes": [],
+      "actual_routes": [
+        "source-and-version-policy.md",
+        "testing-debugging-migrations-upstream.md"
+      ],
+      "max_routes": 2,
+      "checks": {
+        "activation": true,
+        "routes": true,
+        "route_count": true,
+        "version_inspection": true,
+        "assertion_evidence": true,
+        "skill_load": true
+      },
+      "skill_load_proof": "session_tool_trace"
+    },
+    {
+      "id": "pos-upstream-monorepo",
+      "type": "positive",
+      "passed": true,
+      "actual_activation": true,
+      "expected_routes": [
+        "testing-debugging-migrations-upstream.md"
+      ],
+      "allowed_extra_routes": [],
+      "actual_routes": [
+        "testing-debugging-migrations-upstream.md"
+      ],
+      "max_routes": 1,
+      "checks": {
+        "activation": true,
+        "routes": true,
+        "route_count": true,
+        "version_inspection": true,
+        "assertion_evidence": true,
+        "skill_load": true
+      },
+      "skill_load_proof": "session_tool_trace",
+      "response": {
+        "activate_tldraw": true,
+        "evidence": {
+          "reads_repo_AGENTS_md": "Upstream monorepo work begins by reading the repository AGENTS.md.",
+          "targeted_tests_first": "Begin verification with the targeted packages/editor test before broader checks.",
+          "yarn_not_bare_tsc": "The monorepo uses yarn 4 commands and explicitly forbids bare tsc."
+        },
+        "first_step": "Read the repository AGENTS.md, then inspect the monorepo and installed package versions with inspect_project.py before debugging packages/editor.",
+        "reason": "The prompt explicitly requests bug fixing inside the upstream tldraw/tldraw monorepo, a positive activation trigger routed to upstream debugging guidance.",
+        "routes": [
+          "testing-debugging-migrations-upstream.md"
+        ]
+      }
+    },
+    {
+      "id": "pos-stale-code-repair",
+      "type": "positive",
+      "passed": true,
+      "actual_activation": true,
+      "expected_routes": [
+        "source-and-version-policy.md"
+      ],
+      "allowed_extra_routes": [
+        "data-files-assets-export-mermaid.md",
+        "editor-store-state-driver.md",
+        "shapes-tools-bindings.md",
+        "ui-accessibility-internationalization.md"
+      ],
+      "actual_routes": [
+        "data-files-assets-export-mermaid.md",
+        "editor-store-state-driver.md",
+        "shapes-tools-bindings.md",
+        "source-and-version-policy.md",
+        "ui-accessibility-internationalization.md"
+      ],
+      "max_routes": 5,
+      "checks": {
+        "activation": true,
+        "routes": true,
+        "route_count": true,
+        "version_inspection": true,
+        "assertion_evidence": true,
+        "skill_load": true
+      },
+      "skill_load_proof": "session_tool_trace"
+    },
+    {
+      "id": "neg-generic-flowchart",
+      "type": "negative",
+      "passed": true,
+      "actual_activation": false,
+      "expected_routes": [],
+      "allowed_extra_routes": [],
+      "actual_routes": [],
+      "max_routes": 0,
+      "checks": {
+        "activation": true,
+        "routes": true,
+        "route_count": true,
+        "version_inspection": true,
+        "assertion_evidence": true,
+        "skill_load": true
+      },
+      "skill_load_proof": "session_tool_trace"
+    },
+    {
+      "id": "neg-excalidraw",
+      "type": "negative",
+      "passed": true,
+      "actual_activation": false,
+      "expected_routes": [],
+      "allowed_extra_routes": [],
+      "actual_routes": [],
+      "max_routes": 0,
+      "checks": {
+        "activation": true,
+        "routes": true,
+        "route_count": true,
+        "version_inspection": true,
+        "assertion_evidence": true,
+        "skill_load": true
+      },
+      "skill_load_proof": "session_tool_trace"
+    },
+    {
+      "id": "neg-canvas2d-game",
+      "type": "negative",
+      "passed": true,
+      "actual_activation": false,
+      "expected_routes": [],
+      "allowed_extra_routes": [],
+      "actual_routes": [],
+      "max_routes": 0,
+      "checks": {
+        "activation": true,
+        "routes": true,
+        "route_count": true,
+        "version_inspection": true,
+        "assertion_evidence": true,
+        "skill_load": true
+      },
+      "skill_load_proof": "session_tool_trace"
+    },
+    {
+      "id": "neg-unrelated-react",
+      "type": "negative",
+      "passed": true,
+      "actual_activation": false,
+      "expected_routes": [],
+      "allowed_extra_routes": [],
+      "actual_routes": [],
+      "max_routes": 0,
+      "checks": {
+        "activation": true,
+        "routes": true,
+        "route_count": true,
+        "version_inspection": true,
+        "assertion_evidence": true,
+        "skill_load": true
+      },
+      "skill_load_proof": "session_tool_trace"
+    },
+    {
+      "id": "neg-collab-text-editor",
+      "type": "negative",
+      "passed": true,
+      "actual_activation": false,
+      "expected_routes": [],
+      "allowed_extra_routes": [],
+      "actual_routes": [],
+      "max_routes": 0,
+      "checks": {
+        "activation": true,
+        "routes": true,
+        "route_count": true,
+        "version_inspection": true,
+        "assertion_evidence": true,
+        "skill_load": true
+      },
+      "skill_load_proof": "session_tool_trace"
+    },
+    {
+      "id": "adv-yjs-hallucination",
+      "type": "adversarial",
+      "passed": true,
+      "actual_activation": true,
+      "expected_routes": [
+        "sync-collaboration.md"
+      ],
+      "allowed_extra_routes": [
+        "source-and-version-policy.md"
+      ],
+      "actual_routes": [
+        "sync-collaboration.md"
+      ],
+      "max_routes": 2,
+      "checks": {
+        "activation": true,
+        "routes": true,
+        "route_count": true,
+        "version_inspection": true,
+        "assertion_evidence": true,
+        "skill_load": true
+      },
+      "skill_load_proof": "session_tool_trace"
+    },
+    {
+      "id": "adv-mit-license-claim",
+      "type": "adversarial",
+      "passed": true,
+      "actual_activation": true,
+      "expected_routes": [
+        "performance-security-licensing-deployment.md"
+      ],
+      "allowed_extra_routes": [
+        "source-and-version-policy.md",
+        "source-manifest.json"
+      ],
+      "actual_routes": [
+        "performance-security-licensing-deployment.md"
+      ],
+      "max_routes": 3,
+      "checks": {
+        "activation": true,
+        "routes": true,
+        "route_count": true,
+        "version_inspection": true,
+        "assertion_evidence": true,
+        "skill_load": true
+      },
+      "skill_load_proof": "session_tool_trace"
+    },
+    {
+      "id": "adv-python-tldr",
+      "type": "adversarial",
+      "passed": true,
+      "actual_activation": true,
+      "expected_routes": [
+        "data-files-assets-export-mermaid.md"
+      ],
+      "allowed_extra_routes": [
+        "source-and-version-policy.md"
+      ],
+      "actual_routes": [
+        "data-files-assets-export-mermaid.md"
+      ],
+      "max_routes": 2,
+      "checks": {
+        "activation": true,
+        "routes": true,
+        "route_count": true,
+        "version_inspection": true,
+        "assertion_evidence": true,
+        "skill_load": true
+      },
+      "skill_load_proof": "session_tool_trace"
+    }
+  ]
+}

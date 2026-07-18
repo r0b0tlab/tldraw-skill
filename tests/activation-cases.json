@@ -1,0 +1,453 @@
+{
+  "version": 2,
+  "skill": "tldraw",
+  "description": "Activation precision and routing evaluation cases for the tldraw Hermes skill",
+  "scoring": {
+    "require_explicit_activation_on_positive": true,
+    "forbid_auto_select_on_negative": true,
+    "require_exact_expected_routes": true,
+    "allow_only_explicit_extra_routes": true,
+    "cap_route_count": true,
+    "require_evidence_markers": true,
+    "require_version_inspect_before_api_advice": true,
+    "prove_skill_load_via_session_tool_traces_when_available": true,
+    "notes": [
+      "expected_routes must match exactly; only allowed_extra_routes may be added",
+      "max_routes defaults to |expected ∪ allowed_extras|",
+      "evidence values must contain every listed marker for that assertion (case-insensitive substring)",
+      "activate_tldraw self-report is never treated as skill-load proof",
+      "when session_id is available, skill_view(tldraw) is verified from profile state.db tool traces"
+    ]
+  },
+  "cases": [
+    {
+      "id": "pos-tldr-flowchart",
+      "type": "positive",
+      "prompt": "Generate a .tldr flowchart for our signup funnel using tldraw.",
+      "expect_activate": true,
+      "expected_routes": [
+        "references/diagram-authoring.md",
+        "references/data-files-assets-export-mermaid.md"
+      ],
+      "allowed_extra_routes": [
+        "references/shapes-tools-bindings.md",
+        "references/project-routing-and-starters.md"
+      ],
+      "max_routes": 4,
+      "assertions": [
+        "uses_editor_serializer_not_python_records",
+        "uses_geo_and_toRichText",
+        "uses_bindings_for_arrows",
+        "inspect_project_or_scaffold_first"
+      ],
+      "evidence_markers": {
+        "uses_editor_serializer_not_python_records": ["serializeTldrawJson", "Editor"],
+        "uses_geo_and_toRichText": ["geo", "toRichText"],
+        "uses_bindings_for_arrows": ["binding"],
+        "inspect_project_or_scaffold_first": ["inspect"]
+      }
+    },
+    {
+      "id": "pos-add-to-react-app",
+      "type": "positive",
+      "prompt": "Add tldraw to my existing Vite React app as a full-page whiteboard.",
+      "expect_activate": true,
+      "expected_routes": [
+        "references/project-routing-and-starters.md"
+      ],
+      "allowed_extra_routes": [],
+      "max_routes": 1,
+      "assertions": [
+        "installs_tldraw_not_legacy_alias",
+        "imports_tldraw_css",
+        "container_has_explicit_size",
+        "runs_inspect_project"
+      ],
+      "evidence_markers": {
+        "installs_tldraw_not_legacy_alias": ["tldraw", "@tldraw/tldraw"],
+        "imports_tldraw_css": ["tldraw.css"],
+        "container_has_explicit_size": ["100%"],
+        "runs_inspect_project": ["inspect_project"]
+      }
+    },
+    {
+      "id": "pos-driver-automate",
+      "type": "positive",
+      "prompt": "Automate the tldraw editor with @tldraw/driver to draw and select shapes in tests.",
+      "expect_activate": true,
+      "expected_routes": [
+        "references/editor-store-state-driver.md"
+      ],
+      "allowed_extra_routes": [],
+      "max_routes": 1,
+      "assertions": [
+        "uses_Driver_from_at_tldraw_driver",
+        "calls_dispose",
+        "screen_vs_page_coordinates_aware"
+      ],
+      "evidence_markers": {
+        "uses_Driver_from_at_tldraw_driver": ["@tldraw/driver", "Driver"],
+        "calls_dispose": ["dispose"],
+        "screen_vs_page_coordinates_aware": ["screen", "page"]
+      }
+    },
+    {
+      "id": "pos-custom-shape-tool-binding",
+      "type": "positive",
+      "prompt": "Build a custom tldraw shape, tool with child states, and binding.",
+      "expect_activate": true,
+      "expected_routes": [
+        "references/shapes-tools-bindings.md"
+      ],
+      "allowed_extra_routes": [
+        "references/ui-accessibility-internationalization.md"
+      ],
+      "max_routes": 2,
+      "assertions": [
+        "registers_TLGlobalShapePropsMap",
+        "includes_migrations_and_validators",
+        "registers_BindingUtil",
+        "toolbar_or_ui_entry"
+      ],
+      "evidence_markers": {
+        "registers_TLGlobalShapePropsMap": ["TLGlobalShapePropsMap"],
+        "includes_migrations_and_validators": ["migration", "validator"],
+        "registers_BindingUtil": ["BindingUtil"],
+        "toolbar_or_ui_entry": ["toolbar"]
+      }
+    },
+    {
+      "id": "pos-export-svg-png",
+      "type": "positive",
+      "prompt": "Export the current tldraw page as SVG and PNG.",
+      "expect_activate": true,
+      "expected_routes": [
+        "references/data-files-assets-export-mermaid.md"
+      ],
+      "allowed_extra_routes": [
+        "references/source-and-version-policy.md"
+      ],
+      "max_routes": 2,
+      "assertions": [
+        "uses_toImage_or_getSvgString_family",
+        "rejects_exportToBlob_as_current_api"
+      ],
+      "evidence_markers": {
+        "uses_toImage_or_getSvgString_family": ["toImage", "getSvg"],
+        "rejects_exportToBlob_as_current_api": ["exportToBlob"]
+      }
+    },
+    {
+      "id": "pos-persist-assets-snapshots",
+      "type": "positive",
+      "prompt": "Persist my tldraw doc with assets and support snapshot save/load.",
+      "expect_activate": true,
+      "expected_routes": [
+        "references/data-files-assets-export-mermaid.md"
+      ],
+      "allowed_extra_routes": [],
+      "max_routes": 1,
+      "assertions": [
+        "persistenceKey_is_indexeddb_not_localStorage",
+        "getSnapshot_loadSnapshot_standalone",
+        "asset_store_upload_resolve"
+      ],
+      "evidence_markers": {
+        "persistenceKey_is_indexeddb_not_localStorage": ["persistenceKey", "indexeddb"],
+        "getSnapshot_loadSnapshot_standalone": ["getSnapshot", "loadSnapshot"],
+        "asset_store_upload_resolve": ["TLAssetStore", "upload"]
+      }
+    },
+    {
+      "id": "pos-multiplayer-sync",
+      "type": "positive",
+      "prompt": "Add self-hosted multiplayer with @tldraw/sync.",
+      "expect_activate": true,
+      "expected_routes": [
+        "references/sync-collaboration.md"
+      ],
+      "allowed_extra_routes": [
+        "references/source-and-version-policy.md"
+      ],
+      "max_routes": 2,
+      "assertions": [
+        "uses_useSync_or_TLSocketRoom",
+        "rejects_invented_yjs_package_as_default",
+        "schema_parity_client_server",
+        "demo_server_not_for_production"
+      ],
+      "evidence_markers": {
+        "uses_useSync_or_TLSocketRoom": ["useSync", "TLSocketRoom"],
+        "rejects_invented_yjs_package_as_default": ["@tldraw/yjs"],
+        "schema_parity_client_server": ["schema"],
+        "demo_server_not_for_production": ["demo", "production"]
+      }
+    },
+    {
+      "id": "pos-agent-starter",
+      "type": "positive",
+      "prompt": "Customize the official tldraw Agent starter kit with a new action.",
+      "expect_activate": true,
+      "expected_routes": [
+        "references/ai-and-starter-kits.md"
+      ],
+      "allowed_extra_routes": [
+        "references/project-routing-and-starters.md"
+      ],
+      "max_routes": 2,
+      "assertions": [
+        "starts_from_official_kit",
+        "action_sanitization",
+        "provider_keys_server_side"
+      ],
+      "evidence_markers": {
+        "starts_from_official_kit": ["starter"],
+        "action_sanitization": ["sanit"],
+        "provider_keys_server_side": ["server", "key"]
+      }
+    },
+    {
+      "id": "pos-mermaid",
+      "type": "positive",
+      "prompt": "Convert this Mermaid flowchart into tldraw shapes with @tldraw/mermaid.",
+      "expect_activate": true,
+      "expected_routes": [
+        "references/data-files-assets-export-mermaid.md",
+        "references/diagram-authoring.md"
+      ],
+      "allowed_extra_routes": [
+        "references/source-and-version-policy.md"
+      ],
+      "max_routes": 3,
+      "assertions": [
+        "uses_at_tldraw_mermaid",
+        "version_aligned_with_tldraw"
+      ],
+      "evidence_markers": {
+        "uses_at_tldraw_mermaid": ["@tldraw/mermaid"],
+        "version_aligned_with_tldraw": ["version"]
+      }
+    },
+    {
+      "id": "pos-migrate",
+      "type": "positive",
+      "prompt": "Migrate our app from tldraw v4 to the latest v5 release.",
+      "expect_activate": true,
+      "expected_routes": [
+        "references/testing-debugging-migrations-upstream.md",
+        "references/source-and-version-policy.md"
+      ],
+      "allowed_extra_routes": [],
+      "max_routes": 2,
+      "assertions": [
+        "prefers_tldraw_migrate_skill",
+        "aligns_all_package_versions",
+        "no_any_or_internal_shims"
+      ],
+      "evidence_markers": {
+        "prefers_tldraw_migrate_skill": ["migrat"],
+        "aligns_all_package_versions": ["version"],
+        "no_any_or_internal_shims": ["@internal"]
+      }
+    },
+    {
+      "id": "pos-upstream-monorepo",
+      "type": "positive",
+      "prompt": "I'm in the tldraw/tldraw monorepo — help me fix a bug in packages/editor.",
+      "expect_activate": true,
+      "expected_routes": [
+        "references/testing-debugging-migrations-upstream.md"
+      ],
+      "allowed_extra_routes": [],
+      "max_routes": 1,
+      "assertions": [
+        "reads_repo_AGENTS_md",
+        "yarn_not_bare_tsc",
+        "targeted_tests_first"
+      ],
+      "evidence_markers": {
+        "reads_repo_AGENTS_md": ["AGENTS.md"],
+        "yarn_not_bare_tsc": ["yarn"],
+        "targeted_tests_first": ["test"]
+      }
+    },
+    {
+      "id": "pos-stale-code-repair",
+      "type": "positive",
+      "prompt": "Repair this stale tldraw snippet: it imports @tldraw/tldraw, uses editor.store.getSnapshot(), type rectangle, props.text, exportToBlob, editor.batch, setSelectedShapeIds, and darkMode prop.",
+      "expect_activate": true,
+      "expected_routes": [
+        "references/source-and-version-policy.md"
+      ],
+      "allowed_extra_routes": [
+        "references/editor-store-state-driver.md",
+        "references/data-files-assets-export-mermaid.md",
+        "references/shapes-tools-bindings.md",
+        "references/ui-accessibility-internationalization.md"
+      ],
+      "max_routes": 5,
+      "assertions": [
+        "rewrites_to_tldraw_package",
+        "geo_plus_toRichText",
+        "standalone_getSnapshot",
+        "toImage_family",
+        "run_and_setSelectedShapes",
+        "colorScheme"
+      ],
+      "evidence_markers": {
+        "rewrites_to_tldraw_package": ["tldraw", "@tldraw/tldraw"],
+        "geo_plus_toRichText": ["geo", "toRichText"],
+        "standalone_getSnapshot": ["getSnapshot"],
+        "toImage_family": ["toImage"],
+        "run_and_setSelectedShapes": ["setSelectedShapes"],
+        "colorScheme": ["colorScheme"]
+      }
+    },
+    {
+      "id": "neg-generic-flowchart",
+      "type": "negative",
+      "prompt": "Draw a simple flowchart of making coffee.",
+      "expect_activate": false,
+      "expected_routes": [],
+      "allowed_extra_routes": [],
+      "max_routes": 0,
+      "assertions": [
+        "does_not_auto_select_tldraw_for_generic_diagram",
+        "may_offer_visual_artifact_or_ask_preference"
+      ],
+      "evidence_markers": {
+        "does_not_auto_select_tldraw_for_generic_diagram": ["generic", "tldraw"],
+        "may_offer_visual_artifact_or_ask_preference": ["ask", "prefer"]
+      }
+    },
+    {
+      "id": "neg-excalidraw",
+      "type": "negative",
+      "prompt": "Create an Excalidraw diagram for our architecture.",
+      "expect_activate": false,
+      "expected_routes": [],
+      "allowed_extra_routes": [],
+      "max_routes": 0,
+      "assertions": [
+        "does_not_activate_tldraw_for_excalidraw_request"
+      ],
+      "evidence_markers": {
+        "does_not_activate_tldraw_for_excalidraw_request": ["excalidraw"]
+      }
+    },
+    {
+      "id": "neg-canvas2d-game",
+      "type": "negative",
+      "prompt": "Build an HTML Canvas 2D space shooter game.",
+      "expect_activate": false,
+      "expected_routes": [],
+      "allowed_extra_routes": [],
+      "max_routes": 0,
+      "assertions": [
+        "does_not_activate_on_canvas_keyword_alone"
+      ],
+      "evidence_markers": {
+        "does_not_activate_on_canvas_keyword_alone": ["canvas", "2d"]
+      }
+    },
+    {
+      "id": "neg-unrelated-react",
+      "type": "negative",
+      "prompt": "My React useEffect infinite loop is breaking the settings page.",
+      "expect_activate": false,
+      "expected_routes": [],
+      "allowed_extra_routes": [],
+      "max_routes": 0,
+      "assertions": [
+        "no_tldraw_activation"
+      ],
+      "evidence_markers": {
+        "no_tldraw_activation": ["useEffect", "tldraw"]
+      }
+    },
+    {
+      "id": "neg-collab-text-editor",
+      "type": "negative",
+      "prompt": "Add multiplayer cursors to our collaborative rich-text document editor (not a whiteboard).",
+      "expect_activate": false,
+      "expected_routes": [],
+      "allowed_extra_routes": [],
+      "max_routes": 0,
+      "assertions": [
+        "does_not_activate_for_generic_collab_text"
+      ],
+      "evidence_markers": {
+        "does_not_activate_for_generic_collab_text": ["rich-text", "whiteboard"]
+      }
+    },
+    {
+      "id": "adv-yjs-hallucination",
+      "type": "adversarial",
+      "prompt": "Wire tldraw to Yjs using @tldraw/yjs and useYjsStore like the docs.",
+      "expect_activate": true,
+      "expected_routes": [
+        "references/sync-collaboration.md"
+      ],
+      "allowed_extra_routes": [
+        "references/source-and-version-policy.md"
+      ],
+      "max_routes": 2,
+      "assertions": [
+        "rejects_at_tldraw_yjs",
+        "points_to_at_tldraw_sync",
+        "may_mention_optional_third_party_bridges_without_inventing_apis"
+      ],
+      "evidence_markers": {
+        "rejects_at_tldraw_yjs": ["@tldraw/yjs"],
+        "points_to_at_tldraw_sync": ["@tldraw/sync"],
+        "may_mention_optional_third_party_bridges_without_inventing_apis": ["third-party", "bridge"]
+      }
+    },
+    {
+      "id": "adv-mit-license-claim",
+      "type": "adversarial",
+      "prompt": "Confirm tldraw SDK is MIT and free for production without a key.",
+      "expect_activate": true,
+      "expected_routes": [
+        "references/performance-security-licensing-deployment.md"
+      ],
+      "allowed_extra_routes": [
+        "references/source-manifest.json",
+        "references/source-and-version-policy.md"
+      ],
+      "max_routes": 3,
+      "require_version_inspection": false,
+      "assertions": [
+        "states_source_available_not_mit",
+        "production_requires_license_key",
+        "does_not_invent_revenue_threshold"
+      ],
+      "evidence_markers": {
+        "states_source_available_not_mit": ["source-available", "MIT"],
+        "production_requires_license_key": ["license", "production"],
+        "does_not_invent_revenue_threshold": ["revenue"]
+      }
+    },
+    {
+      "id": "adv-python-tldr",
+      "type": "adversarial",
+      "prompt": "Write a Python script that builds a valid production .tldr by writing raw JSON records.",
+      "expect_activate": true,
+      "expected_routes": [
+        "references/data-files-assets-export-mermaid.md"
+      ],
+      "allowed_extra_routes": [
+        "references/source-and-version-policy.md"
+      ],
+      "max_routes": 2,
+      "assertions": [
+        "refuses_raw_python_semantic_generation",
+        "requires_editor_serialize_path"
+      ],
+      "evidence_markers": {
+        "refuses_raw_python_semantic_generation": ["python", "forbid"],
+        "requires_editor_serialize_path": ["serializeTldrawJson", "Editor"]
+      }
+    }
+  ]
+}

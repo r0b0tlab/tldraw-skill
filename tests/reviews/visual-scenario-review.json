@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-07-18T21:33:34Z",
+  "target": "tldraw 5.2.5 runtime visual scenario pack",
+  "command": "npm run visual:scenarios --prefix eval-app",
+  "generated_report": "eval-app/artifacts/visual-scenarios/report.json",
+  "method": [
+    "real tldraw 5.2.5 browser runtime",
+    "deterministic shape and binding assertions",
+    "full-resolution pixel inspection of every screenshot"
+  ],
+  "automated_gates": {
+    "scenario_count": 5,
+    "all_arrows_bound": true,
+    "semantic_node_overlap_pairs": 0,
+    "console_errors": 0
+  },
+  "scenarios": [
+    {
+      "name": "flowchart",
+      "screenshot": "eval-app/artifacts/visual-scenarios/flowchart.png",
+      "result": "pass",
+      "review": "Recognizable decision flow; labels are unclipped; yes/no branches are legible; connectors visibly attach; hierarchy and spacing are clear."
+    },
+    {
+      "name": "architecture",
+      "screenshot": "eval-app/artifacts/visual-scenarios/architecture.png",
+      "result": "pass",
+      "review": "Recognizable framed pipeline; increased connector gaps leave visible continuous routes around labels; annotations remain inside the frame; no clipped labels or detached edges."
+    },
+    {
+      "name": "sequence",
+      "screenshot": "eval-app/artifacts/visual-scenarios/sequence.png",
+      "result": "pass",
+      "review": "Three actors, aligned lifelines, and chronologically descending messages are recognizable; message text and arrow direction remain legible with no collisions."
+    },
+    {
+      "name": "mind-map",
+      "screenshot": "eval-app/artifacts/visual-scenarios/mind-map.png",
+      "result": "pass",
+      "review": "Central topic and four balanced outward branches are immediately recognizable; all labels, arrows, and colored categories are clear and unclipped."
+    },
+    {
+      "name": "annotated-image",
+      "screenshot": "eval-app/artifacts/visual-scenarios/annotated-image.png",
+      "result": "pass",
+      "review": "Dashboard image is readable; three numbered callouts attach to distinct regions; labels and image text have adequate contrast and no clipping."
+    }
+  ],
+  "overall": "pass",
+  "limitations": [
+    "Generated screenshots and reports are CI artifacts and remain ignored; this durable file records the reviewed conclusion.",
+    "Clean CI regenerates screenshots and reruns semantic/overlap/console gates, but it does not reproduce the human pixel judgment; this file is a dated review attestation, not an automated visual-regression baseline.",
+    "Pixel review covers the deterministic 1440x900 capture; responsive behavior remains covered separately by browser accessibility/runtime checks."
+  ]
+}

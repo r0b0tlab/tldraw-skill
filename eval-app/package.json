@@ -1,0 +1,41 @@
+{
+  "name": "tldraw-skill-eval-app",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "tldraw 5.2.5 evaluation app for Hermes skill Stage C (bridge, .tldr round-trip, diagram, custom utils)",
+  "scripts": {
+    "dev": "vite",
+    "typecheck": "tsc -b --pretty false",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "test:bridge": "tsx scripts/test-bridge-gates.ts",
+    "test:prod-bridge": "npm run build && node scripts/check-prod-bridge.mjs",
+    "test:error-boundary": "node scripts/error-boundary.test.mjs",
+    "test": "npm run test:bridge && npm run test:prod-bridge && npm run test:error-boundary",
+    "verify": "npm run typecheck && node scripts/verify.mjs",
+    "benchmark": "node scripts/performance.mjs",
+    "visual:scenarios": "node scripts/visual-scenarios.mjs",
+    "e2e": "npm run verify",
+    "lint": "oxlint"
+  },
+  "dependencies": {
+    "@tldraw/driver": "5.2.5",
+    "@tldraw/mermaid": "5.2.5",
+    "@tldraw/sync": "5.2.5",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "tldraw": "5.2.5"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.3",
+    "oxlint": "^1.71.0",
+    "playwright": "^1.61.1",
+    "tsx": "^4.23.1",
+    "typescript": "~5.9.3",
+    "vite": "^8.1.1"
+  }
+}
