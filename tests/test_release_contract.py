@@ -110,9 +110,16 @@ class PublicReadmeTests(unittest.TestCase):
     def test_readme_security_claims_are_reproducible(self) -> None:
         readme = read("README.md")
         advisory = read("integration/agent-eval/SECURITY.md")
+        releasing = read("RELEASING.md")
 
         self.assertNotIn("all 19 distributable files", readme)
         self.assertNotIn("with a `SAFE` verdict", readme)
+        self.assertNotIn("installed-file parity", readme)
+        self.assertNotIn("installed-file hash parity", readme)
+        self.assertIn("clean-profile installation and helper verification", readme)
+        self.assertIn(
+            "verify discovery, `skill_view`, and all three stdlib helpers", releasing
+        )
         self.assertIn("six low-severity affected package entries", readme)
         self.assertIn("six affected package entries", advisory)
         self.assertIn("GHSA-866g-f22w-33x8", advisory)

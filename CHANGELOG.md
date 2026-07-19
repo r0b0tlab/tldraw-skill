@@ -14,7 +14,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 - Expanded the public README with installation prerequisites, quick-start prompts, architecture, helper behavior, repository layout, security boundaries, limitations, troubleshooting, contribution, and release guidance.
 - Clarified that the official-document helper writes only to its dedicated cache while project inspection and diagnostics remain read-only.
-- Replaced unverifiable scanner and file-count precision with a reproducible release procedure and aligned the documented local gate with CI dependency and workflow checks.
+- Removed unsupported scanner, file-count, and hash-parity precision; the README now describes only the clean-profile and helper checks recorded in the release procedure and aligns its local gate with CI dependency and workflow checks.
 
 ## [1.0.0] - 2026-07-18
 

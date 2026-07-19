@@ -83,7 +83,7 @@ Install the exact repository-relative skill path:
 hermes skills install r0b0tlab/tldraw-skill/skills/tldraw
 ```
 
-Hermes treats public community skills as untrusted until scanned. Review the scanner result before confirming installation. The release process requires a clean-profile installation and installed-file parity check; [`RELEASING.md`](RELEASING.md) records the reproducible procedure. Trust the scanner output from your own installation rather than a repository claim.
+Hermes treats public community skills as untrusted until scanned. Review the scanner result before confirming installation. The release process requires a clean-profile installation and helper verification; [`RELEASING.md`](RELEASING.md) records the reproducible procedure. Trust the scanner output from your own installation rather than a repository claim.
 
 ### Custom tap
 
@@ -449,7 +449,7 @@ For bugs and feature requests, use [GitHub Issues](https://github.com/r0b0tlab/t
 - Machine capability map: [`tests/capability-map.json`](tests/capability-map.json)
 - CI workflow: [`.github/workflows/ci.yml`](.github/workflows/ci.yml)
 
-A release is not considered verified solely because it was committed. The release process requires an exact-commit green CI run, a clean public HTTPS clone, the documented gates, a clean worktree afterward, a clean-profile Hermes installation, and installed-file hash parity.
+A release is not considered verified solely because it was committed. Follow [`RELEASING.md`](RELEASING.md): run the documented gates and audits, verify a clean-profile Hermes installation, require green CI on `main`, and validate a clean public clone before tagging.
 
 ## License
 

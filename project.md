@@ -182,6 +182,8 @@ None for v1.0.0.
 
 - [x] Task 35: Resolve independent README review findings and publish evidence-backed corrections
 - [x] Task 34: Expand public README with quick start, architecture, security, troubleshooting, contribution, and release guidance
+
+- [x] Task 36: Remove final README release-procedure overclaim and verify review pass
 ## Discoveries
 
 <!-- New information discovered during development -->
@@ -213,3 +215,4 @@ None for v1.0.0.
 - **2026-07-18** — Completed publication verification: the Hermes community scan returned SAFE, the clean-profile install contained all 19 expected files with exact hash parity, installed helpers ran online/offline, Actions passed after runtime upgrades, and annotated release v1.0.0 was published.
 - **2026-07-18** — Expanded the public README into a comprehensive installation, usage, architecture, security, troubleshooting, contribution, and release guide; added durable README contracts, corrected cache-write documentation, enabled private vulnerability reporting, and verified local/source/link/audit gates.
 - **2026-07-18** — Resolved the independent README review findings: corrected helper-write wording, replaced unsupported SAFE/file-count precision with reproducible release steps, added a GHSA-backed AI SDK advisory inventory, aligned the local gate with CI, linked security docs, and added regression contracts.
+- **2026-07-18** — Removed the final README release-procedure overclaim by matching installation and release wording exactly to RELEASING.md; added regression assertions excluding undocumented parity/hash claims and revalidated rendering, links, tests, workflow evidence, and secret safety.
