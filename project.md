@@ -1,6 +1,6 @@
 ---
 project: tldraw World-Class Skill
-status: verify
+status: ship
 created: 2026-07-16
 updated: 2026-07-18
 owner: am423
@@ -22,7 +22,7 @@ A research-grounded, peer-matched skill that makes tldraw workflows predictable 
 
 ## Context
 
-Hermes users and coding agents need correct, version-aware guidance across tldraw applications, artifacts, custom extensions, Driver automation, sync, Mermaid, migrations, and AI/starter-kit workflows. The implementation is complete locally and is in final independent-review and publication verification.
+Hermes users and coding agents need correct, version-aware guidance across tldraw applications, artifacts, custom extensions, Driver automation, sync, Mermaid, migrations, and AI/starter-kit workflows. Version 1.0.0 is published with reproducible clean-clone, CI, and clean-profile installation evidence.
 
 ## Constraints
 
@@ -41,11 +41,12 @@ Hermes users and coding agents need correct, version-aware guidance across tldra
 - ✓ Custom shapes/tools/bindings/migrations/accessibility, Driver, Mermaid, exports, persistence, and error boundaries — v1.0.0
 - ✓ Hardened local sync and AI/starter evaluation with explicit provider-unverified status when credentials are unavailable — v1.0.0
 - ✓ Capability, activation, workflow, source-drift, upstream-drift, distribution, visual, performance, and security evidence — v1.0.0
+- ✓ Post-remediation independent review with no unresolved critical/high/medium finding — v1.0.0
+- ✓ Public repository, green GitHub Actions, clean remote clone, complete Hermes bundle, and clean-profile installation — v1.0.0
 
 ### Active
 
-- [ ] Complete post-remediation independent review with no unresolved critical/high finding.
-- [ ] Commit/push, obtain green GitHub Actions, and reproduce release gates from a clean remote clone/profile.
+None for v1.0.0.
 
 ### Out of Scope
 
@@ -57,12 +58,12 @@ Hermes users and coding agents need correct, version-aware guidance across tldra
 
 ## Current State
 
-**Phase:** verify
-**Last completed:** GitHub Actions passed on `main`, and a clean remote clone passed the full Python, eval-app, sync, agent, workflow, source, upstream, visual, benchmark, and audit gates without dirtying tracked files.
-**In progress:** Complete clean-profile Hermes installation after fixing an ambiguous support-path phrase that the Hermes bundle parser interpreted as a missing file.
-**Next action:** Push the bundle-reference regression fix, re-run CI, then install and inspect the remote skill in the no-bundled-skills profile.
-**Blockers:** No code blocker. Provider-backed AI execution remains explicitly unverified because no supported provider credentials are available.
-**Notes:** Publication is not complete until the remote clean-profile path and CI are verified.
+**Phase:** ship
+**Last completed:** Published annotated tag and GitHub release `v1.0.0` after green Actions run `29668112571`; clean-profile Hermes installation passed its SAFE scan with all 19 distributable files hash-matching the source package.
+**In progress:** None.
+**Next action:** Maintenance only: monitor upstream tldraw/API drift and dependency advisories before the next release.
+**Blockers:** None for v1.0.0.
+**Notes:** Provider-backed AI remains explicitly unverified, and six low-severity transitive AI SDK advisories remain documented rather than hidden.
 ## Architecture
 
 - `skills/tldraw/` is the only distributable skill root; `SKILL.md` routes to concise references and stdlib inspection/fetch helpers.
@@ -167,16 +168,16 @@ Hermes users and coding agents need correct, version-aware guidance across tldra
 ### Phase: SHIP
 
 - [x] Documentation
-- [ ] Release packaging
-- [ ] Tag release
+- [x] Release packaging
+- [x] Tag release
 
 
 - [x] Task 31: [6.1] Install skill live and verify in fresh Hermes session
-- [ ] Task 7: Ship skill and update project state
+- [x] Task 7: Ship skill and update project state
 
 
-- [ ] Task 33: [6.3] Verify clean-profile distribution and publication path
-- [ ] Task 32: [6.2] Complete repository, release, and remote GitHub hygiene
+- [x] Task 33: [6.3] Verify clean-profile distribution and publication path
+- [x] Task 32: [6.2] Complete repository, release, and remote GitHub hygiene
 ## Discoveries
 
 <!-- New information discovered during development -->
@@ -205,3 +206,4 @@ Hermes users and coding agents need correct, version-aware guidance across tldra
 - **2026-07-18** — Independent review gate closed: API/spec PASS, evidence/release PASS, and focused post-fix security PASS with no critical/high/medium findings. Local stable gates: 80 Python tests, agent 27/27, workflow 12/12.
 - **2026-07-18** — Created and pushed public r0b0tlab/tldraw-skill. First CI run exposed a Vite dev server localhost/IPv6 bind mismatch. Added a failing regression contract, bound the server to 127.0.0.1, and made normal verify runs leave tracked runtime fixtures unchanged; local 82-test and browser gates pass.
 - **2026-07-18** — Remote CI passed and a clean remote clone passed every documented runtime/source/audit gate with a clean worktree. Clean-profile Hermes installation then exposed one packaging incompatibility: slash-delimited overview prose was parsed as a support-file reference. Added a release regression contract and corrected the wording and install path.
+- **2026-07-18** — Completed publication verification: the Hermes community scan returned SAFE, the clean-profile install contained all 19 expected files with exact hash parity, installed helpers ran online/offline, Actions passed after runtime upgrades, and annotated release v1.0.0 was published.
