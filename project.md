@@ -179,6 +179,8 @@ None for v1.0.0.
 - [x] Task 33: [6.3] Verify clean-profile distribution and publication path
 - [x] Task 32: [6.2] Complete repository, release, and remote GitHub hygiene
 
+
+- [x] Task 35: Resolve independent README review findings and publish evidence-backed corrections
 - [x] Task 34: Expand public README with quick start, architecture, security, troubleshooting, contribution, and release guidance
 ## Discoveries
 
@@ -210,3 +212,4 @@ None for v1.0.0.
 - **2026-07-18** — Remote CI passed and a clean remote clone passed every documented runtime/source/audit gate with a clean worktree. Clean-profile Hermes installation then exposed one packaging incompatibility: slash-delimited overview prose was parsed as a support-file reference. Added a release regression contract and corrected the wording and install path.
 - **2026-07-18** — Completed publication verification: the Hermes community scan returned SAFE, the clean-profile install contained all 19 expected files with exact hash parity, installed helpers ran online/offline, Actions passed after runtime upgrades, and annotated release v1.0.0 was published.
 - **2026-07-18** — Expanded the public README into a comprehensive installation, usage, architecture, security, troubleshooting, contribution, and release guide; added durable README contracts, corrected cache-write documentation, enabled private vulnerability reporting, and verified local/source/link/audit gates.
+- **2026-07-18** — Resolved the independent README review findings: corrected helper-write wording, replaced unsupported SAFE/file-count precision with reproducible release steps, added a GHSA-backed AI SDK advisory inventory, aligned the local gate with CI, linked security docs, and added regression contracts.

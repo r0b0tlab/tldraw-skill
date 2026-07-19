@@ -87,6 +87,61 @@ class PublicReadmeTests(unittest.TestCase):
                 f"README link target does not exist: {relative_path}",
             )
 
+    def test_security_document_relative_links_resolve(self) -> None:
+        for relative_document in (
+            "SECURITY.md",
+            "integration/agent-eval/SECURITY.md",
+            "integration/agent-eval/README-EVAL.md",
+        ):
+            document = ROOT / relative_document
+            for raw_target in re.findall(
+                r"!?\[[^]]*\]\(([^)]+)\)", document.read_text(encoding="utf-8")
+            ):
+                target = raw_target.strip().split(maxsplit=1)[0]
+                parsed = urlsplit(target)
+                if parsed.scheme or target.startswith(("#", "mailto:")):
+                    continue
+                relative_path = unquote(parsed.path)
+                self.assertTrue(
+                    (document.parent / relative_path).resolve().exists(),
+                    f"{relative_document} link target does not exist: {relative_path}",
+                )
+
+    def test_readme_security_claims_are_reproducible(self) -> None:
+        readme = read("README.md")
+        advisory = read("integration/agent-eval/SECURITY.md")
+
+        self.assertNotIn("all 19 distributable files", readme)
+        self.assertNotIn("with a `SAFE` verdict", readme)
+        self.assertIn("six low-severity affected package entries", readme)
+        self.assertIn("six affected package entries", advisory)
+        self.assertIn("GHSA-866g-f22w-33x8", advisory)
+        for package in (
+            "@ai-sdk/provider-utils",
+            "@ai-sdk/gateway",
+            "@ai-sdk/anthropic",
+            "@ai-sdk/google",
+            "@ai-sdk/openai",
+            "`ai`",
+        ):
+            self.assertIn(package, advisory)
+
+    def test_ci_equivalent_readme_gate_tracks_ci_commands(self) -> None:
+        readme = read("README.md")
+        workflow = read(".github/workflows/ci.yml")
+        self.assertIn("python3 -m unittest -v tests.test_workflow_eval", readme)
+        self.assertIn("python -m unittest -v tests.test_workflow_eval", workflow)
+        commands = (
+            "npx --yes playwright@1.61.1 install --with-deps chromium",
+            "npm audit --omit=dev --audit-level=high --prefix eval-app",
+            "npm audit --omit=dev --audit-level=high --prefix integration/sync-eval",
+            "npm audit --omit=dev --audit-level=high --prefix integration/agent-eval",
+            "npm audit --omit=dev --audit-level=high --prefix integration/agent-eval/workflow-starter",
+        )
+        for command in commands:
+            self.assertIn(command, readme)
+            self.assertIn(command, workflow)
+
 
 class HarnessReleaseContractTests(unittest.TestCase):
     def test_agent_worker_does_not_enable_wildcard_cors(self) -> None:

@@ -6,10 +6,15 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 ## [Unreleased]
 
+### Added
+
+- Added an agent-evaluation security note that inventories the current AI SDK advisory, affected package entries, vulnerable ranges, and remediation constraint.
+
 ### Changed
 
 - Expanded the public README with installation prerequisites, quick-start prompts, architecture, helper behavior, repository layout, security boundaries, limitations, troubleshooting, contribution, and release guidance.
 - Clarified that the official-document helper writes only to its dedicated cache while project inspection and diagnostics remain read-only.
+- Replaced unverifiable scanner and file-count precision with a reproducible release procedure and aligned the documented local gate with CI dependency and workflow checks.
 
 ## [1.0.0] - 2026-07-18
 

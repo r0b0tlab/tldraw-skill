@@ -28,7 +28,7 @@ Pinned `tldraw@5.2.5` / `@tldraw/tlschema@5.2.5`.
 
 ```bash
 cd integration/agent-eval
-npm install
+npm ci
 npm test                 # harness unit tests
 npm run typecheck
 npm run build            # agent production build
@@ -40,6 +40,10 @@ npm run eval             # full evidence → tests/results/agent/
 ## Provider execution
 
 **Unverified** without credentials. This harness does **not** synthesize provider responses.
+
+## Security and dependency status
+
+This is a local evaluation harness, not a production service. Review [`SECURITY.md`](SECURITY.md) for trust boundaries and the current low-severity AI SDK advisory inventory before adapting it.
 
 ## Evidence
 

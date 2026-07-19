@@ -83,7 +83,7 @@ Install the exact repository-relative skill path:
 hermes skills install r0b0tlab/tldraw-skill/skills/tldraw
 ```
 
-Hermes treats public community skills as untrusted until scanned. Review the scanner result before confirming installation. The v1.0.0 publication path was verified in a clean profile with a `SAFE` verdict and all 19 distributable files hash-matching the source package.
+Hermes treats public community skills as untrusted until scanned. Review the scanner result before confirming installation. The release process requires a clean-profile installation and installed-file parity check; [`RELEASING.md`](RELEASING.md) records the reproducible procedure. Trust the scanner output from your own installation rather than a repository claim.
 
 ### Custom tap
 
@@ -271,6 +271,8 @@ Available corpora are `index`, `docs`, `examples`, `releases`, and `full`. Cache
 ├── eval-app/                      # real React/browser/.tldr/Driver/visual harness
 ├── integration/sync-eval/         # local two-client sync and security harness
 ├── integration/agent-eval/        # agent/starter, migration, and bundle-safety harness
+│   ├── SECURITY.md                # trust boundaries and AI SDK advisory inventory
+│   └── workflow-starter/          # separately locked and audited workflow fixture
 ├── .github/workflows/ci.yml       # complete CI gate and evidence upload
 ├── CONTRIBUTING.md
 ├── SECURITY.md
@@ -285,7 +287,7 @@ Generated screenshots, builds, databases, caches, dependencies, and machine-spec
 | Boundary | Policy |
 | --- | --- |
 | Community installation | Inspect Hermes's community-skill scan before accepting installation. |
-| Project inspection | Helpers are read-only, standard-library-only, and secret-value safe. |
+| Project inspection | The inspector and doctor are read-only, standard-library-only, and secret-value safe. The documentation fetcher writes only to its dedicated cache. |
 | Development bridge | Development builds only, explicit opt-in, loopback hosts only, no arbitrary evaluation, shell, filesystem, or environment access. |
 | Production bundle | CI builds the app and verifies that Hermes/Driver bridge code is absent from production output. |
 | Imported data | `.tldr`, snapshots, SVG/HTML, assets, URLs, redirects, IDs, and metadata are untrusted and must be parsed, bounded, and sanitized. |
@@ -293,7 +295,7 @@ Generated screenshots, builds, databases, caches, dependencies, and machine-spec
 | AI | Provider credentials stay in server/worker environments. Model output is schema-validated, sanitized, and restricted to allowlisted actions. |
 | Licensing | The skill's original content is MIT; the tldraw SDK remains source-available under its own license. |
 
-The local sync and agent systems in this repository are evaluation harnesses, not hosted production services. Review [`SECURITY.md`](SECURITY.md), [`integration/sync-eval/SECURITY.md`](integration/sync-eval/SECURITY.md), and the deployment guidance before adapting them.
+The local sync and agent systems in this repository are evaluation harnesses, not hosted production services. Review [`SECURITY.md`](SECURITY.md), [`integration/sync-eval/SECURITY.md`](integration/sync-eval/SECURITY.md), [`integration/agent-eval/SECURITY.md`](integration/agent-eval/SECURITY.md), and the deployment guidance before adapting them.
 
 Report a vulnerability privately through a [GitHub Security Advisory](https://github.com/r0b0tlab/tldraw-skill/security/advisories/new). Do not put API keys, license keys, private canvas contents, or user documents in a public issue.
 
@@ -301,7 +303,7 @@ Report a vulnerability privately through a [GitHub Security Advisory](https://gi
 
 - Scope is documented public SDK APIs, published packages, and official starters. It does not cover private tldraw.com internals, undocumented `@internal` symbols, or unrelated generic Canvas/WebGL work.
 - Provider-backed AI behavior is explicitly unverified because the release gate did not use provider credentials. Credential-free starter architecture, typecheck, build, sanitization, action, and secret-scan paths are verified; live model quality is not.
-- Six low-severity transitive advisories in the retained AI starter dependency tree are documented. High-severity production dependency audits pass.
+- `npm audit` reports six low-severity affected package entries in the retained AI starter dependency tree, all rooted in one resource-consumption advisory. The [advisory inventory](integration/agent-eval/SECURITY.md) records the GHSA, packages, ranges, and current remediation constraint. No moderate, high, or critical production dependency findings were observed in that harness.
 - The sync and agent servers are local evaluation harnesses, not production deployment templates or managed services.
 - The observed documentation/package baseline is tldraw 5.2.5. Newer projects must be inspected and checked against their installed declarations and release notes.
 - A machine-specific Chromium baseline exercises 3,999 shapes against tldraw's default 4,000-shape page limit. It is evidence from that environment, not a universal latency guarantee.
@@ -323,7 +325,9 @@ python3 tests/verify_source_manifest.py
 python3 tests/run_workflow_eval.py
 ```
 
-### Complete local gate
+### CI-equivalent local gate
+
+The browser installation command below matches the pinned Linux CI setup and may install operating-system packages. If those packages are already present, the package-local Playwright installer is sufficient for routine development.
 
 ```bash
 export PYTHONDONTWRITEBYTECODE=1
@@ -338,8 +342,9 @@ python3 tests/check_capability_coverage.py \
   --map tests/capability-map.json \
   --skill skills/tldraw
 
+npx --yes playwright@1.61.1 install --with-deps chromium
+
 npm ci --prefix eval-app
-npm exec --prefix eval-app -- playwright install chromium
 npm test --prefix eval-app
 npm run verify --prefix eval-app
 npm run benchmark --prefix eval-app
@@ -355,6 +360,14 @@ npm ci --prefix integration/agent-eval
 npm run eval --prefix integration/agent-eval
 
 python3 tests/run_workflow_eval.py
+python3 -m unittest -v tests.test_workflow_eval
+
+npm audit --omit=dev --audit-level=high --prefix eval-app
+npm audit --omit=dev --audit-level=high --prefix integration/sync-eval
+npm audit --omit=dev --audit-level=high --prefix integration/agent-eval
+npm audit --omit=dev --audit-level=high --prefix integration/agent-eval/workflow-starter
+
+git diff --check
 ```
 
 Machine-specific outputs go below `tests/results/` and `eval-app/artifacts/` and remain ignored. Stable independent-review summaries live in [`tests/reviews/`](tests/reviews/). CI recreates the harness evidence and uploads it for each run.
