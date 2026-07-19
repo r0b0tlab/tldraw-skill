@@ -9,8 +9,9 @@ Contributions to this Hermes skill are welcome.
 5. Run the complete gate documented in `README.md`. At minimum, every change must pass:
 
 ```bash
-python3 -m unittest discover -s tests -p 'test_*.py'
+export PYTHONDONTWRITEBYTECODE=1
 python3 tests/validate_skill.py skills/tldraw
+python3 -m unittest discover -s tests -p 'test_*.py'
 python3 tests/verify_source_manifest.py
 npm ci --prefix eval-app
 npm test --prefix eval-app

@@ -4,6 +4,13 @@ All notable changes to this project are documented here.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and releases use semantic versioning for this repository's skill content and tooling. tldraw dependency versions are tracked separately.
 
+## [Unreleased]
+
+### Changed
+
+- Expanded the public README with installation prerequisites, quick-start prompts, architecture, helper behavior, repository layout, security boundaries, limitations, troubleshooting, contribution, and release guidance.
+- Clarified that the official-document helper writes only to its dedicated cache while project inspection and diagnostics remain read-only.
+
 ## [1.0.0] - 2026-07-18
 
 ### Added
@@ -22,4 +29,5 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 - Development bridge is gated to localhost and development builds and is checked absent from production output.
 - Provider credentials are never embedded in browser bundles; unavailable live provider execution is labeled unverified rather than simulated.
 
+[Unreleased]: https://github.com/r0b0tlab/tldraw-skill/compare/v1.0.0...HEAD
 [1.0.0]: https://github.com/r0b0tlab/tldraw-skill/releases/tag/v1.0.0

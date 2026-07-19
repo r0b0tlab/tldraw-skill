@@ -44,6 +44,50 @@ class PublicApiGuidanceTests(unittest.TestCase):
         self.assertIn("getShapeUtil", ai_ref)
 
 
+class PublicReadmeTests(unittest.TestCase):
+    def test_readme_is_a_complete_public_entry_point(self) -> None:
+        readme = read("README.md")
+        required_sections = (
+            "## Contents",
+            "## Why this skill",
+            "## What it covers",
+            "## Requirements",
+            "## Install",
+            "## Quick start",
+            "## Example prompts",
+            "## How it works",
+            "## Helper scripts",
+            "## Repository layout",
+            "## Security model",
+            "## Known limitations",
+            "## Troubleshooting",
+            "## Contributing",
+            "## Release and provenance",
+            "## License",
+        )
+        for section in required_sections:
+            self.assertIn(section, readme, f"README is missing {section}")
+
+        self.assertIn(
+            "hermes skills install r0b0tlab/tldraw-skill/skills/tldraw", readme
+        )
+        self.assertIn("tldraw@5.2.5", readme)
+        self.assertIn("Provider-backed AI", readme)
+        self.assertIn("GitHub Security Advisory", readme)
+
+    def test_readme_relative_links_resolve(self) -> None:
+        for raw_target in re.findall(r"!?\[[^]]*\]\(([^)]+)\)", read("README.md")):
+            target = raw_target.strip().split(maxsplit=1)[0]
+            parsed = urlsplit(target)
+            if parsed.scheme or target.startswith(("#", "mailto:")):
+                continue
+            relative_path = unquote(parsed.path)
+            self.assertTrue(
+                (ROOT / relative_path).exists(),
+                f"README link target does not exist: {relative_path}",
+            )
+
+
 class HarnessReleaseContractTests(unittest.TestCase):
     def test_agent_worker_does_not_enable_wildcard_cors(self) -> None:
         worker_root = ROOT / "integration/agent-eval/worker"
